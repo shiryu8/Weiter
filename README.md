@@ -1,25 +1,23 @@
-# README
+# <アプリ名>
+Weiter
+## サイト概要
+サッカーに関連したものを投稿しシェアするサイトです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### サイトテーマ
+『世界中の人々がサッカーで繋がる』
+個人のサッカーの日常や挑戦してる事、サッカーに関連した知識や情報を投稿し、Instagram感覚で楽しめたり、Note感覚で学べるサイトです。
 
-Things you may want to cover:
+### テーマを選んだ理由
+小さい頃からサッカーをやってきて、instagramやTwitter、Noteなどでサッカーに関しての情報を発信してる人がいる中で、サッカーだけの情報を見れるサイトがあったらという思いがありました。
 
-* Ruby version
+### ターゲットユーザ
+サッカーが好きなすべての人
 
-* System dependencies
+### 主な利用シーン
+自分のサッカーに関した日常や挑戦を発信したいと思ったとき
+サッカーに関連した知識や情報を発信したいと思ったとき
 
-* Configuration
+## 設計書
+### 機能一覧
+https://docs.google.com/spreadsheets/d/1cf-HV4q8gLFcRiUSPqtqU-2goW2wJjCHFw6nFNXpHJ8/edit#gid=0
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Weiter
