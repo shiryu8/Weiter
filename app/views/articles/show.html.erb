@@ -1,0 +1,16 @@
+<h1>投稿</h1>
+<div class="row">
+	<div class="">
+		<h4><%= attachment_image_tag @article, :image %></h4>
+	</div>
+	<div class="">
+		<h4><%= @article.title %></h4>
+	</div>
+	<div class="">
+		<h4><%= @article.content %></h4>
+	</div>
+
+	<% if @article.user == current_user %>
+		<%= link_to "削除", article_path(@article), method: :delete %>
+	<% end %>
+</div>

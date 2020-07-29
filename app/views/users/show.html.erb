@@ -1,0 +1,32 @@
+<h1>プロフィール</h1>
+
+<div class="container">
+	<div class="row">
+		<div class="form-group">
+			<%= attachment_image_tag @user, :profile_image, class: "rounded-circle", format: 'jpeg', fallback: "no_image.jpg" %>
+		</div>
+		<div class="col-md-4">
+			<%= @user.name %>
+		</div>
+		<div class="col-md-4">
+			<%= @user.goal %>
+		</div>
+		<div class="col-md-8">
+			<%= @user.introduction %>
+		</div>
+	</div>
+</div>
+
+
+<h3>投稿</h3><span>(全<%= @user.articles.count %>件)</span>
+<div class="row">
+	<% @articles.each do |article| %>
+		<div class="col-md-3">
+			<div><%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %></div>
+			<div><%= link_to article.name, article_path(article.id) %></div>
+			<div></div>
+		</div>
+    <% end %>
+</div>
+
+<%= link_to "編集", edit_user_path, method: :get %>

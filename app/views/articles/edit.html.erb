@@ -1,0 +1,21 @@
+<h1>編集</h1>
+    <%= form_for(@article) do |f| %>
+
+    <div class="">
+    	<h4>イメージ</h4>
+    	<%= f.attachment_field :image %>
+    </div>
+
+    <div class="">
+    	<h4>タイトル</h4>
+    	<%= f.text_field :title %>
+    </div>
+
+    <div class="">
+    	<h4>キャプション</h4>
+    	<%= f.text_field :content %>
+    </div>
+
+     <%= f.submit "保存" %>
+
+     <% end %>
