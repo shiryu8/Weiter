@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+	before_action :authenticate_user!
+    before_action :current_user_book?, only: [:edit, :update, :destroy]
 
 	def new
 		@article_new = Article.new
