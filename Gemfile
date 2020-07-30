@@ -68,3 +68,6 @@ gem 'pry-rails'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'jquery-rails'

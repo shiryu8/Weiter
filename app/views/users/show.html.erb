@@ -23,10 +23,10 @@
 	<% @articles.each do |article| %>
 		<div class="col-md-3">
 			<div><%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %></div>
-			<div><%= link_to article.name, article_path(article.id) %></div>
+			<div><%= link_to article.title, article_path(article) %></div>
 			<div></div>
 		</div>
     <% end %>
 </div>
 
-<%= link_to "編集", edit_user_path, method: :get %>
+<%= link_to "編集", edit_user_path(@user), method: :get %>
