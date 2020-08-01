@@ -1,7 +1,6 @@
-<h1>プロフィール</h1>
-
 <div class="container">
 	<div class="row">
+		<h1>プロフィール</h1>
 		<div class="form-group">
 			<%= attachment_image_tag @user, :profile_image, size: "300x180", class: "rounded-circle", format: 'jpeg', fallback: "no_image.jpg" %>
 		</div>
@@ -14,36 +13,45 @@
 		<div class="col-md-8">
 			<%= @user.introduction %>
 		</div>
+		<div>
+			<p><%=link_to "フォロー", followsandfollowers_user_path(@user) %></p>
+			<p><%=link_to "フォロワー", followsandfollowers_user_path(@user) %></p>
+			<!-- 自分をのぞいた人たちのみボタンを表示する -->
+			<% if current_user != @user %>
+				<% if @user.followed_by?(current_user) %>
+					<p><%=link_to "フォロー中", user_relationships_path(@user), method: :delete %></p>
+				<% else %>
+					<p><%=link_to "フォローする", user_relationships_path(@user), method: :post %></p>
+				<% end %>
+			<% end %>
+		</div>
+
+		<h3>投稿(全<%= @user.articles.count %>件)</h3>
+			<% @articles.each do |article| %>
+				<div class="col-md-3">
+					<div>
+						<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
+					</div>
+					<div>
+						<%= link_to article.title, article_path(article) %>
+					</div>
+					<div></div>
+				</div>
+		    <% end %>
+
+		<h3>いいねした投稿(全<%= @user.favorite_articles.count %>件)</h3>
+			<% @favorite_articles.each do |article| %>
+				<div class="col-md-3">
+					<div>
+						<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
+					</div>
+					<div>
+						<%=link_to article.title, article_path(article.id) %>
+					</div>
+				</div>
+		<% end %>
+
+		<%= link_to "編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %>
 	</div>
 </div>
 
-
-<h3>投稿</h3><span>(全<%= @user.articles.count %>件)</span>
-<div class="row">
-	<% @articles.each do |article| %>
-		<div class="col-md-3">
-			<div>
-				<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
-			</div>
-			<div>
-				<%= link_to article.title, article_path(article) %>
-			</div>
-			<div></div>
-		</div>
-    <% end %>
-</div>
-
-<h3>いいねした投稿</h3><span>(全<%= @user.favorite_articles.count %>件)</span>
-<div class="row">
-	<% @favorite_articles.each do |article| %>
-		<div class="col-md-3">
-			<div>
-				<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
-			</div>
-			<div>
-				<%=link_to article.title, article_path(article.id) %>
-			</div>
-		</div>
-<% end %>
-
-<%= link_to "編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %>

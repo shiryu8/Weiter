@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<h2>フォロワー一覧</h2>
+		<% @follower_users.each do |follower_user| %>
+			<div>
+				<%= link_to user_path(follower_user) do %>
+					<%= attachment_image_tag follower_user, :profile_image, size: "120x60", fallback: "no_image.jpg" %>
+				<% end %>
+				<%= link_to follower_user.name, user_path(follower_user) %>
+			</div>
+		    <% if current_user != follower_user %>
+		        <% if follower_user.followed_by?(current_user) %>
+		            <p><%=link_to "フォロー中", user_relationships_followdestroy_path(follower_user), method: :delete %></p>
+		        <% else %>
+		            <p><%=link_to "フォローする", user_relationships_followcreate_path(follower_user), method: :post %></p>
+		        <% end %>
+		    <% end %>
+		<% end %>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<h2>フォロー一覧</h2>
+		<% @follow_users.each do |follow_user| %>
+		    <div>
+				<%= link_to user_path(follow_user) do %>
+					<%= attachment_image_tag follow_user, :profile_image, size: "120x60", fallback: "no_image.jpg" %>
+				<% end %>
+				<%= link_to follow_user.name, user_path(follow_user) %>
+			</div>
+		    <% if current_user != follow_user %>
+		        <% if follow_user.followed_by?(current_user) %>
+		            <p><%=link_to "フォロー中", user_relationships_followdestroy_path(follow_user), method: :delete %></p>
+		        <% else %>
+		            <p><%=link_to "フォローする", user_relationships_followcreate_path(follow_user), method: :post %></p>
+		        <% end %>
+		    <% end %>
+		<% end %>
+	</div>
+</div>

@@ -1,76 +1,78 @@
-<h1>投稿</h1>
-<div class="row">
-	<div class="">
-		<h4><%= attachment_image_tag @article, :image %></h4>
-	</div>
-	<div class="">
-		<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-		<%= @article.favorites.count %>
-	</div>
-	<div class="">
-		<i class="fa fa-comment"></i>
-		<%= @article.post_comments.count %>
-	</div>
-	<div class="">
-		<h4><%= @article.title %></h4>
-	</div>
-	<div class="">
-		<h4><%= @article.content %></h4>
-	</div>
+<div class="container">
+	<div class="row">
+		<h1>投稿</h1>
+		<div class="">
+			<h4><%= attachment_image_tag @article, :image, size: "600x360" %></h4>
+		</div>
+		<div class="">
+			<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+			<%= @article.favorites.count %>
+		</div>
+		<div class="">
+			<i class="fa fa-comment"></i>
+			<%= @article.post_comments.count %>
+		</div>
+		<div class="">
+			<h4><%= @article.title %></h4>
+		</div>
+		<div class="">
+			<h4><%= @article.content %></h4>
+		</div>
 
-	<% if @article.user == current_user %>
-		<%= link_to "削除", article_path(@article), method: :delete, class: "btn btn-danger pull-right" %>
-	<% end %>
-</div>
-<div class="comment-list bt style-2" id="comments">
-    <div class="float-wrapper">
-        <h4 class="comment-count">
-            コメント一覧
-        </h4>
-        </div>
-            <ol>
-            	<% @article.post_comments.each do |post_comment| %>
-	                  <div class="comment-body bb">
-	                    <div class="comment-avatar">
-	                      <div class="avatar">
-	                        <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-	                      </div>
-	                    </div>
-	                    <div class="comment-text">
-	                      <div class="comment-author clearfix">
-	                        <%= link_to post_comment.user.name, user_path(post_comment.user) %>
-	                        <span class="comment-meta">
-	                          <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
-	                        </span>
-	                      </div>
-	                      <div class="comment-entry">
-	                      	<%= post_comment.comment %>
-	                      </div>
-	                      <% if post_comment.user == current_user %>
-				            <div>
-				              <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
-				            </div>
-				          <% end %>
-	                    </div>
-	                  </div>
-                <% end %>
-            </ol>
-        </div>
-    </div>
-</div>
-<% if @article.user != current_user %>
-	<div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
-	    <h3 class="section-title left">
-	        <span>コメント</span>
-	    </h3>
+		<% if @article.user == current_user %>
+			<%= link_to "削除", article_path(@article), method: :delete, class: "btn btn-danger pull-right" %>
+		<% end %>
+		<div class="comment-list bt style-2" id="comments">
+		    <div class="float-wrapper">
+		        <h4 class="comment-count">
+		            コメント一覧
+		        </h4>
+		        </div>
+		            <ol>
+		            	<% @article.post_comments.each do |post_comment| %>
+			                  <div class="comment-body bb">
+			                    <div class="comment-avatar">
+			                      <div class="avatar">
+			                        <%= attachment_image_tag post_comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+			                      </div>
+			                    </div>
+			                    <div class="comment-text">
+			                      <div class="comment-author clearfix">
+			                        <%= link_to post_comment.user.name, user_path(post_comment.user) %>
+			                        <span class="comment-meta">
+			                          <span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+			                        </span>
+			                      </div>
+			                      <div class="comment-entry">
+			                      	<%= post_comment.comment %>
+			                      </div>
+			                      <% if post_comment.user == current_user %>
+						            <div>
+						              <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+						            </div>
+						          <% end %>
+			                    </div>
+			                  </div>
+		                <% end %>
+		            </ol>
+		        </div>
+		    </div>
+		</div>
+		<% if @article.user != current_user %>
+			<div class="section-title-wrapper style-1 v1 mt-30" id="divAddComment">
+			    <h3 class="section-title left">
+			        <span>コメント</span>
+			    </h3>
+			</div>
+			<%= form_for [@article, @post_comment] do |f| %>
+			    <div class="row">
+			        <div class="col-sm-8">
+			            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
+			        </div>
+			    </div>
+			    <%= f.submit "送信する", class: "btn btn-primary pull-right" %>
+			<% end %>
+		<% end %>
 	</div>
-	<%= form_for [@article, @post_comment] do |f| %>
-	    <div class="row">
-	        <div class="col-sm-8">
-	            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
-	        </div>
-	    </div>
-	    <%= f.submit "送信する", class: "btn btn-primary pull-right" %>
-	<% end %>
-<% end %>
+</div>
 

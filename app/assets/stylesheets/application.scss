@@ -17,4 +17,13 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$font-primary: 'Century', sans-serif;
+
+.bar {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 40px;
+}
+
+.header-border-bottom {
+  border-bottom: 1px solid #ccc;
+}
