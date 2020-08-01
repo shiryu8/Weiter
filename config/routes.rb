@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :articles do
   	resource :favorites, only: [:create, :destroy]
+      post 'favorites/favoritescreate', to: 'favorites#favoritescreate'
+      delete 'favorites/favoritesdestroy', to: 'favorites#favoritesdestroy'
   	resources :post_comments, only: [:create, :destroy]
   end
 

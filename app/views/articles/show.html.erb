@@ -6,15 +6,15 @@
 		</div>
 		<div>
 		<% if @article.favorited_by?(current_user) %>
-						<div>
-							<%= link_to article_favorites_path(@article), method: :delete do %>
+			<div>
+				<%= link_to article_favorites_favoritesdestroy_path(@article), method: :delete do %>
 							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
 							<%= @article.favorites.count %>
 							<% end %>
 						</div>
 				<% else %>
 					<div>
-						<%= link_to article_favorites_path(@article), method: :post do %>
+						<%= link_to article_favorites_favoritescreate_path(@article), method: :post do %>
 							<i class="fa fa-heart" aria-hidden="true" style="color: blue;"></i>
 							<%= @article.favorites.count %>
 						<% end %>
@@ -37,6 +37,7 @@
 		</div>
 
 		<% if @article.user == current_user %>
+			<%= link_to "編集", edit_article_path(@article), method: :get, class: "btn btn-primary pull-right" %>
 			<%= link_to "削除", article_path(@article), method: :delete, class: "btn btn-danger pull-right" %>
 		<% end %>
 		<div class="comment-list bt style-2" id="comments">

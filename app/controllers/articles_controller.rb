@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 	before_action :authenticate_user!
-    before_action :current_user_book?, only: [:edit, :update, :destroy]
+    before_action :current_user_article?, only: [:edit, :update, :destroy]
 
 	def new
 		@article_new = Article.new
@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
 		@article_new.user_id = current_user.id
 
 		if @article_new.save
-			redirect_to articles_path(@article_new.id)
+			redirect_to articles_path
 		else
 			render :new
 		end
@@ -31,10 +31,10 @@ class ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 	end
 
-	def updete
+	def update
 		@article = Article.find(params[:id])
 		if @article.update(article_params)
-			redirect_to articles_path(@article.id)
+			redirect_to article_path(@article)
 		else
 			render :edit
 		end
@@ -50,4 +50,10 @@ class ArticlesController < ApplicationController
 			def article_params
 				params.require(:article).permit(:title, :content, :image, :user_id)
 			end
+            def current_user_article?
+            	article = Article.find(params[:id])
+	            if article.user_id != current_user.id
+	                redirect_to articles_path
+	            end
+        	end
 end
