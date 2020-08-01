@@ -5,7 +5,7 @@ class Article < ApplicationRecord
 	has_many :post_comments
 	attachment :image
 
-	#投稿がファボしてあるかどうか」を判定する
+	#投稿がファボしてあるかどうかを判定する
 	def favorited_by?(user)
         favorites.where(user_id: user.id).exists?
     end
