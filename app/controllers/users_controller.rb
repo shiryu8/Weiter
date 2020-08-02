@@ -24,30 +24,21 @@ class UsersController < ApplicationController
 	  	end
   end
 
-  def followsandfollowers
+  def followingsandfollowers
     @user = User.find(params[:id])
-    @follow_users = @user.followings
+    @following_users = @user.followings
     @follower_users = @user.followers
   end
-  # def follows
-  #   user = User.find(params[:id])
-  #   @users = user.followings
-  # end
 
-  # def followers
-  #   user = User.find(params[:id])
-  #   @users = user.followers
-  # end
-
-  private
-    def user_params
-  	 params.require(:user).permit(:name, :introduction, :profile_image, :goal)
-    end
-
-    def check_current_user?
-      user = User.find_by(id: params[:id])
-      if user != current_user
-        redirect_to user_path(current_user)
+    private
+      def user_params
+    	 params.require(:user).permit(:name, :introduction, :profile_image, :goal)
       end
-    end
+
+      def check_current_user?
+        user = User.find_by(id: params[:id])
+        if user != current_user
+          redirect_to user_path(current_user)
+        end
+      end
 end

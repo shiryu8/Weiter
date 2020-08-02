@@ -27,9 +27,8 @@ class User < ApplicationRecord
   # 中間テーブルを介して「following」モデルのUser(フォローする側)を集めることを「followers」と定義
   has_many :followers, through: :passive_relationships, source: :following
 
-  #Userがfollow済みかどうか判定
+  #Userがフォロー済みかどうか
   def followed_by?(user)
-    # 今自分(引数のuser)がフォローしようとしているユーザーがフォローされているユーザーの中から、自分がいるかどうかを調べる
     passive_relationships.find_by(following_id: user.id).present?
   end
 end

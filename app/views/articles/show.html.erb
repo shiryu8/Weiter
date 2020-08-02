@@ -2,29 +2,28 @@
 	<div class="row">
 		<h1>投稿</h1>
 		<div class="">
+			<p><%= attachment_image_tag @user, :profile_image, size: "150x90", class: "rounded-circle", format: 'jpeg', fallback: "no_image.jpg" %></p>
+			<h4><%= link_to @user.name, user_path(@user) %></h4>
+		</div>
+		<div class="">
 			<h4><%= attachment_image_tag @article, :image, size: "600x360" %></h4>
 		</div>
-		<div>
 		<% if @article.favorited_by?(current_user) %>
 			<div>
 				<%= link_to article_favorites_favoritesdestroy_path(@article), method: :delete do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-							<%= @article.favorites.count %>
-							<% end %>
-						</div>
-				<% else %>
-					<div>
-						<%= link_to article_favorites_favoritescreate_path(@article), method: :post do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: blue;"></i>
-							<%= @article.favorites.count %>
-						<% end %>
-					</div>
+						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+						<%= @article.favorites.count %>
 				<% end %>
+			</div>
+		<% else %>
+			<div>
+				<%= link_to article_favorites_favoritescreate_path(@article), method: :post do %>
+					<i class="fa fa-heart" aria-hidden="true" style="color: blue;"></i>
+					<%= @article.favorites.count %>
+				<% end %>
+			</div>
+		<% end %>
 		</div>
-		<!-- <div class="">
-			<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-			<%= @article.favorites.count %>
-		</div> -->
 		<div class="">
 			<i class="fa fa-comment"></i>
 			<%= @article.post_comments.count %>
@@ -88,7 +87,9 @@
 			            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
 			        </div>
 			    </div>
-			    <%= f.submit "送信する", class: "btn btn-primary pull-right" %>
+			    <% if @article.user == current_user %>
+			    	<%= f.submit "送信する", class: "btn btn-primary pull-right" %>
+			    <% end %>
 			<% end %>
 		<% end %>
 	</div>

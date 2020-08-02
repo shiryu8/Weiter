@@ -14,14 +14,13 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
   	resource :relationships, only: [:create, :destroy]
-    post 'relationships/followcreate', to: 'relationships#followcreate'
-    delete 'relationships/followdestroy', to: 'relationships#followdestroy'
   	# #フォロー一覧
    #  get :follows, on: :member
    #  #フォロワー一覧
    #  get :followers, on: :member
-
+   post 'relationships/followcreate', to: 'relationships#followcreate'
+   delete 'relationships/followdestroy', to: 'relationships#followdestroy'
     #フォロワー一覧＋フォロー一覧
-    get :followsandfollowers, on: :member
+    get :followingsandfollowers, on: :member
   end
 end

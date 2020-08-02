@@ -13,11 +13,14 @@ class RelationshipsController < ApplicationController
   def followcreate
   	follow = current_user.active_relationships.build(follower_id: params[:user_id])
     follow.save
-    redirect_to followsandfollowers_user_path(params[:user_id])
+    redirect_to followingsandfollowers_user_path(current_user.id)
   end
 
   def followdestroy
-  	follow = current_user.active_relationships.find_by(follower_id: params[:user_id]).destroy
-    redirect_to followsandfollowers_user_path(params[:user_id])
+  	follow = current_user.active_relationships.find_by(follower_id: params[:user_id])
+    if follow.present?
+      follow.destroy
+    end
+    redirect_to followingsandfollowers_user_path(current_user.id)
   end
 end
