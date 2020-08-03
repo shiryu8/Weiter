@@ -26,33 +26,54 @@
 			<% end %>
 		</div>
 
-		<h3>投稿(全<%= @user.articles.count %>件)</h3>
-			<% @articles.each do |article| %>
-				<div class="col-md-3">
-					<div>
-						<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
-					</div>
-					<div>
-						<%= link_to article.title, article_path(article) %>
-					</div>
-					<div></div>
-				</div>
-		    <% end %>
+		<div class="wrap">
+			<ul id="tab-menu" class="clearfix">
+				  <li><a href="#tab1" class="active">自分の投稿(全<%= @user.articles.count %>件)</a></li>
+				  <li><a href="#tab2" class="">いいねした投稿(全<%= @user.favorite_articles.count %>件)</a></li>
+		　　</ul>
+		　　<div id="tab-contents" class="clearfix">
+				<div id="tab1" class="tab">
+					<% @articles.each do |article| %>
+						<div class="col-md-3">
+							<div>
+								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
+							</div>
+							<div>
+								<%= link_to article.title, article_path(article) %>
+							</div>
+							<div>
+								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
+							</div>
+							<div>
+								<i class="fa fa-comment"></i><%= article.post_comments.count %>
+							</div>
+						</div>
+			    	<% end %>
+			    </div>
 
-		<h3>いいねした投稿(全<%= @user.favorite_articles.count %>件)</h3>
-			<% @favorite_articles.each do |article| %>
-				<div class="col-md-3">
-					<div>
-						<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
-					</div>
-					<div>
-						<%=link_to article.title, article_path(article.id) %>
-					</div>
+				<div id="tab2" class="tab">
+					<% @favorite_articles.each do |article| %>
+						<div class="col-md-3">
+							<div>
+								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
+							</div>
+							<div>
+								<%=link_to article.title, article_path(article.id) %>
+							</div>
+							<div>
+								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
+							</div>
+							<div>
+								<i class="fa fa-comment"></i><%= article.post_comments.count %>
+							</div>
+						</div>
+					<% end %>
 				</div>
-		<% end %>
-		<% if @user == current_user %>
-			<%= link_to "編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %>
-		<% end %>
+			</div>
+		</div>
+			<% if @user == current_user %>
+				<%= link_to "編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %>
+			<% end %>
 	</div>
 </div>
 
