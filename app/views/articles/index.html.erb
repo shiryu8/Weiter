@@ -1,5 +1,10 @@
 <div class="container">
 	<div class="row">
+		<p>検索</p>
+		<%= form_tag(articles_path,:method => 'get') do %>
+			<%= text_field_tag :search %>
+			<%= submit_tag 'Search', :name => nil %>
+		<% end %>
 		<h1>Recoomend</h1>
 		<% @articles.each do |article| %>
 		<div class="col-md-3">
