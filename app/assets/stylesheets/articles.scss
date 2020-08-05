@@ -1,3 +1,82 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@charset "UTF-8";
+
+#abc .btn-gnavi {
+  position: fixed;
+  right: 20px;
+  width: 30px;
+  height: 24px;
+  z-index: 3;
+  box-sizing: border-box;
+  cursor: pointer;
+  -webkit-transition: all 400ms;
+  transition: all 400ms
+}
+
+#abc .btn-gnavi span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: #666;
+  border-radius: 10px;
+  -webkit-transition: all 400ms;
+  transition: all 400ms
+}
+
+#abc .btn-gnavi span:nth-child(1) {
+  top: 0
+}
+#abc .btn-gnavi span:nth-child(2) {
+  top: 10px
+}
+#abc .btn-gnavi span:nth-child(3) {
+  top: 20px
+}
+
+
+#abc nav {
+  position: fixed;
+    top: 0;
+    right: -300px;
+    width: 100px;
+    padding-top: 500px;
+    background:#333;
+    font-size: 16px;
+    box-sizing: border-box;
+    z-index: 2
+}
+#abc nav ul li {
+    display:block;
+    padding: 20px 28px
+#abc nav ul li a {
+    text-decoration: none;
+    color: #ddd
+}
+
+
+
+#abc .btn-gnavi.open span {
+    background: #fff
+}
+#abc .btn-gnavi.open span {
+    width: 24px;
+}
+#abc .contents section p {
+    position: absolute;
+    top: 50%;
+    width: 30%;
+    line-height: 1.4;
+    font-size: 20px;
+    color: #fff;
+}
+#abc .contents section:nth-child(odd) p {
+    left: 10%
+}
+#abc .contents section:nth-child(even) p {
+    right: 10%
+}
+}

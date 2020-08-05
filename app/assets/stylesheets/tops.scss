@@ -1,3 +1,47 @@
 // Place all the styles related to the tops controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.main-top {
+  width: 700px;
+  float: left;
+  margin-right: 30px;
+}
+.top-theme {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+.top-article {
+	padding-left: 75px;
+}
+.top-sidebar {
+  width: 300px;
+  float: left;
+}
+.top-profile {
+	text-align: right;
+}
+.side-theme {
+  border-bottom: 8px solid #f7f7f7;
+  text-align: center;
+  line-height: 0.6;
+}
+.top-sidebar {
+	border-left: 3px solid #ccc;
+	padding-left: 50px;
+	margin-left: 20px;
+}
+.side-profile {
+	text-align: right;
+}
+.side-title {
+	text-align: center;
+}
