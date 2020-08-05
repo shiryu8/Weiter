@@ -3,21 +3,21 @@
 		<h1>投稿</h1>
 		<div id="abc">
 			<% if @article.user == current_user %>
-			<p class="btn-gnavi">
-		        <span></span>
-		        <span></span>
-		        <span></span>
-		    </p>
-	        <nav id="global-navi">
-	        	<ul class="menu">
-	        		<li>
-	        			<a href=""><%= link_to "編集", edit_article_path(@article), method: :get %></a>
-	        		</li>
-	        		<li>
-	        			<a href=""><%= link_to "削除", article_path(@article), method: :delete %></a>
-	        		</li>
-        		</ul>
-    		</nav>
+				<p class="btn-gnavi">
+			        <span></span>
+			        <span></span>
+			        <span></span>
+			    </p>
+		        <nav id="global-navi">
+		        	<ul class="menu">
+		        		<li>
+		        			<a href=""><%= link_to "編集", edit_article_path(@article), method: :get %></a>
+		        		</li>
+		        		<li>
+		        			<a href=""><%= link_to "削除", article_path(@article), method: :delete %></a>
+		        		</li>
+	        		</ul>
+	    		</nav>
     		<% end %>
 		</div>
 		<div class="">
