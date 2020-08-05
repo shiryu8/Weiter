@@ -16,6 +16,7 @@
 			<div>
 				<%= link_to article.title, article_path(article) %>
 			</div>
+			<!-- 部分的に更新したい場所（いいね機能） -->
 			<div id="favorites_buttons_<%= article.id %>">
 				<%= render partial: 'favorites/favorite', locals: { article: article} %>
 			</div>

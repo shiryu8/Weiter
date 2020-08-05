@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  #いいね機能（非同期通信）
   def create
   	@article = Article.find(params[:article_id])
     favorite = current_user.favorites.new(article_id: @article.id)
