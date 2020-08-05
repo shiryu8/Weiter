@@ -28,8 +28,8 @@
 			<h4><%= attachment_image_tag @article, :image, size: "600x360" %></h4>
 		</div>
 		<div id="favorites_buttons_<%= @article.id %>">
-				<%= render partial: 'favorites/favorite', locals: { article: @article} %>
-			</div>
+			<%= render partial: 'favorites/favorite', locals: { article: @article} %>
+		</div>
 		</div>
 		<div class="">
 			<i class="fa fa-comment"></i>
