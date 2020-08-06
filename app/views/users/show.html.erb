@@ -45,19 +45,19 @@
 <div class="continer">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="follow-check">
+			<div class="profile-edit">
 			<!-- 自分をのぞいた人たちのみボタンを表示する -->
 				<% if current_user != @user %>
 					<% if @user.followed_by?(current_user) %>
-						<h5 class="during-follow"><%=link_to "フォロー中", user_relationships_path(@user), method: :delete %></h5>
+						<h5 class="during-follow"><%=link_to "フォロー中", user_relationships_path(@user), method: :delete, class: 'btn btn-primary pull-right' %></h5>
 					<% else %>
-						<h5 class="do-follow"><%=link_to "フォローする", user_relationships_path(@user), method: :post %></h5>
+						<h5 class="do-follow"><%=link_to "フォローする", user_relationships_path(@user), method: :create, class: 'btn btn-primary pull-right' %></h5>
 					<% end %>
 				<% end %>
 			</div>
 			<div class="profile-edit">
 				<% if @user == current_user %>
-					<h5 class="edit-title"><%= link_to "プロフィール編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %></h5>
+					<h5 class="edit-title"><%= link_to "プロフィールを編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %></h5>
 				<% end %>
 			</div>
 		</div>
