@@ -22,13 +22,13 @@
                 <ul class="nav navbar-nav navbar-right">
                   <% if user_signed_in? %>
                     <li>
-                      <%= link_to 'ホーム',articles_path, class: "glyphicon glyphicon-home home" %>
+                      <%= link_to '', articles_path, class: "fas fa-home" %>
                     </li>
                     <li>
-                      <%= link_to 'マイページ', user_path(current_user), class: "glyphicon glyphicon-user users" %>
+                      <%= link_to '', user_path(current_user), class: "far fa-laugh-wink" %>
                     </li>
                     <li>
-                      <%= link_to '新規投稿', new_article_path, class: "glyphicon glyphicon-book books" %>
+                      <%= link_to '', new_article_path, class: "far fa-plus-square" %>
                     </li>
                   <% else %>
                     <li>

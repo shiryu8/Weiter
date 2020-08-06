@@ -10,9 +10,9 @@
     right: 0;
     right: -200px;
     width: 137px;
-    height: 50px;
+    height: 150px;
     padding-top: 20px;
-    background: #fff;
+    background: #CCFFCC;
     font-size: 15px;
     box-sizing: border-box;
     z-index: 2;
@@ -81,4 +81,81 @@
 
 #abc .contents section:nth-child(even) p {
     right: 10px;
+}
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.nav-search {
+    position: absolute;
+    right: 20px;
+    top: 120px;
+}
+.container {
+    margin-top: 10px;
+}
+.nav-search {
+    width: 300px;
+}
+.main-home {
+    width: 700px;
+    float: left;
+    margin-right: 30px;
+}
+.home-theme {
+    border-bottom: 6px solid #E6FFE9;
+    text-align: center;
+    line-height: 0.6;
+}
+.home-article {
+    padding-left: 75px;
+}
+.home-img {
+    margin-top: 30px;
+}
+.home-favo, .home-comment {
+    float:left;
+    margin: 5px 10px 10px 20px;
+    font-size: 20px;
+}
+.home-title {
+    margin-top: 50px;
+    text-align: left;
+}
+.home-profileimg {
+    text-align: right;
+}
+.col-md-12 {
+    width: 350px;
+}
+.home-sidebar {
+    width: 300px;
+    float: left;
+}
+.home-profile {
+    text-align: right;
+}
+.home-side-theme {
+    border-bottom: 6px solid #C2EEFF;
+    text-align: center;
+    line-height: 0.6;
+}
+.home-sidebar {
+    border-left: 2px solid #EEEEEE;
+    padding-left: 50px;
+    margin-left: 20px;
+}
+.home-side-favo, .home-side-comment {
+    float:left;
+    margin: 1px 2px 2px 4px;
+    font-size: 15px;
+}
+.home-side-profile {
+    text-align: right;
+}
+.home-side-title {
+    text-align: left;
+    margin-top: 30px;
 }

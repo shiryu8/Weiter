@@ -1,73 +1,76 @@
-<div class="container">
-	<div class="row">
-		<p>検索</p>
-		<%= form_tag(articles_path,:method => 'get') do %>
-			<%= text_field_tag :search %>
-			<%= submit_tag 'Search', :name => nil %>
-		<% end %>
-		<h1>Recoomend</h1>
-		<% @articles.each do |article| %>
-		<div class="col-md-3">
-			<div>
-				<%= link_to article_path(article) do %>
-					<%= attachment_image_tag article, :image, size: "300x180" %>
-				<% end %>
-			</div>
-			<div>
-				<%= link_to article.title, article_path(article) %>
-			</div>
-			<!-- 部分的に更新したい場所（いいね機能） -->
-			<div id="favorites_buttons_<%= article.id %>">
-				<%= render partial: 'favorites/favorite', locals: { article: article} %>
-			</div>
-            <div class="">
-            	<i class="fa fa-comment"></i>
-            	<%= link_to article.post_comments.count, article_path(article) %>
-            </div>
-			<div>
-				<%= link_to user_path(article.user) do %>
-					<%= attachment_image_tag article.user, :profile_image, size: "120x60" %>
-				<% end %>
-				<%= link_to article.user.name,  user_path(article.user) %>
-			</div>
+<main class="clearfix">
+	<div class="container">
+		<div class="nav-search">
+			<%= form_tag(articles_path, :method => 'get') do %>
+				<div class="input-group">
+					<%= text_field_tag :search, nil, placeholder: "キーワード検索", class: "form-control" %>
+					<span class="input-group-btn">
+						<%= submit_tag '検索', :name => nil, class: "btn btn-primary" %>
+					</span>
+				</div>
+			<% end %>
 		</div>
-		<% end %>
-		<h2>ランキング</h2>
-		<% @all_ranks.each do |article| %>
-			<div>
-				<%= link_to article_path(article) do %>
-					<%= attachment_image_tag article, :image, size: "300x180" %>
-				<% end %>
-			</div>
-			<!-- ログインしているユーザーがファボしたかどうかで分岐 -->
-				<% if article.favorited_by?(current_user) %>
-						<div>
-							<%= link_to article_favorites_path(article), method: :delete do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-							<%= article.favorites.count %>
-							<% end %>
-						</div>
-				<% else %>
-					<div>
-						<%= link_to article_favorites_path(article), method: :post do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: blue;"></i>
-							<%= article.favorites.count %>
+		<div class="main-home">
+			<h1 class="home-theme">Recoomend</h1>
+			<div class="home-article">
+				<div class="row">
+					<div class="col-md-10">
+						<% @articles.each do |article| %>
+							<div class="home-img">
+								<%= link_to article_path(article) do %>
+									<%= attachment_image_tag article, :image, class: "img-rounded", size: "550x330" %>
+								<% end %>
+							</div>
+							<!-- 部分的に更新したい場所（いいね機能） -->
+							<div id="favorites_buttons_<%= article.id %>", class="home-favo">
+									<%= render partial: 'favorites/favorite', locals: { article: article} %>
+							</div>
+							<div class="home-comment">
+								<i class="fa fa-comment"></i>
+	            				<%= link_to article.post_comments.count, article_path(article) %>
+	            			</div>
+							<h3 class="home-title">
+								<%= link_to article.title, article_path(article) %>
+							</h3>
+							<p class="home-profileimg">
+								<%= link_to user_path(article.user) do %>
+									<%= attachment_image_tag article.user, :profile_image, class: "img-circle", size: "60x60" %>
+								<% end %>
+								by<%= link_to article.user.name,  user_path(article.user) %>
+							</p>
 						<% end %>
 					</div>
-				<% end %>
-            <div class="">
-            	<i class="fa fa-comment"></i>
-            	<%= link_to article.post_comments.count, article_path(article) %>
-            </div>
-			<div>
-				<%= link_to article.title, article_path(article) %>
+				</div>
 			</div>
-			<div>
-				<%= link_to user_path(article.user) do %>
-					<%= attachment_image_tag article.user, :profile_image, size: "120x60" %>
-				<% end %>
-				<%= link_to article.user.name,  user_path(article.user) %>
-			</div>
-		<% end %>
+		</div>
+
+		<div class="home-sidebar">
+			<h1 class="home-side-theme">Ranking</h1>
+				<div class="row">
+					<div class="col-md-12">
+						<% @all_ranks.each do |article| %>
+							<div class="side-img">
+								<%= link_to article_path(article) do %>
+									<%= attachment_image_tag article, :image, size: "300x200", class: "img-rounded" %>
+								<% end %>
+							</div>
+							<!-- 部分的に更新したい場所（いいね機能） -->
+							<div class="home-side-favo">
+								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
+							</div>
+							<div class="home-side-comment">
+								<i class="fa fa-comment"></i><%= article.post_comments.count %>
+							</div>
+            				<h5 class="home-side-title"><%= link_to article.title, article_path(article) %></h5>
+            				<p class="home-side-profile">
+            					<%= link_to user_path(article.user) do %>
+            						<%= attachment_image_tag article.user, :profile_image, class: "img-circle", size: "40x40" %>
+            					<% end %>
+								by<%= link_to article.user.name,  user_path(article.user) %>
+							</p>
+						<% end %>
+					</div>
+				</div>
+		</div>
 	</div>
-</div>
+</main>

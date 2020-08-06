@@ -1,6 +1,6 @@
 <main class="clearfix">
 	<div class="container">
-	<div class="main-top">
+		<div class="main-top">
 				<h1 class="top-theme">トップページ</h1>
 				<div class="top-article">
 					<div class="row">
@@ -8,7 +8,7 @@
 							<% @articles.each do |article| %>
 								<div class="top-img">
 									<%= link_to article_path(article) do %>
-										<%= attachment_image_tag article, :image, size: "550x330" %>
+										<%= attachment_image_tag article, :image, size: "550x330", class: "img-rounded" %>
 									<% end %>
 								</div>
 								<div class="top-box">
@@ -21,7 +21,7 @@
 									<h3 class="top-title"><%= link_to article.title, article_path(article) %></h3>
 									<p class="top-profile">
 										<%= link_to user_path(article.user) do %>
-											<%= attachment_image_tag article.user, :profile_image, size: "120x60" %>
+											<%= attachment_image_tag article.user, :profile_image, size: "60x60", class: "img-circle" %>
 										<% end %>
 										by<%= link_to article.user.name,  user_path(article.user) %>
 									</p>
@@ -33,14 +33,13 @@
 	</div>
 
 	<div class="top-sidebar">
-		<h1 class="side-theme">ランキング</h1>
-		<div class="side-article">
+		<h1 class="top-side-theme">ランキング</h1>
 			<div class=row>
 				<div class="col-md-12">
 					<% @all_ranks.each do |article| %>
 						<div class="side-img">
 							<%= link_to article_path(article) do %>
-								<%= attachment_image_tag article, :image, size: "300x180" %>
+								<%= attachment_image_tag article, :image, size: "300x200", class: "img-rounded" %>
 							<% end %>
 						</div>
 						<p class="side-heart-comment">
@@ -49,17 +48,16 @@
 							<i class="fa fa-comment"></i>
 							<%= article.post_comments.count %>
 						</p>
-						<h5 class="side-title"><%= link_to article.title, article_path(article) %></h5>
-						<p class="side-profile">
+						<h5 class="top-side-title"><%= link_to article.title, article_path(article) %></h5>
+						<p class="top-side-profile">
 							<%= link_to user_path(article.user) do %>
-								<%= attachment_image_tag article.user, :profile_image, size: "120x60" %>
+								<%= attachment_image_tag article.user, :profile_image, size: "40x40", class: "img-circle" %>
 							<% end %>
 							by<%= link_to article.user.name,  user_path(article.user) %>
 						</p>
 					<% end %>
 				</div>
 			</div>
-		</div>
 	</div>
 </div>
 </main>_

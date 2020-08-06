@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="row">
-		<h1>プロフィール</h1>
+		<h1>Profile</h1>
 		<div class="form-group">
-			<%= attachment_image_tag @user, :profile_image, size: "300x180", class: "rounded-circle", format: 'jpeg', fallback: "no_image.jpg" %>
+			<%= attachment_image_tag @user, :profile_image, size: "200x200", class: "img-circle", format: 'jpeg', fallback: "no_image.jpg" %>
 		</div>
 		<div class="col-md-4">
 			<%= @user.name %>
@@ -28,15 +28,15 @@
 
 		<div class="wrap">
 			<ul id="tab-menu" class="clearfix">
-				  <li><a href="#tab1" class="active">自分の投稿(全<%= @user.articles.count %>件)</a></li>
-				  <li><a href="#tab2" class="">いいねした投稿(全<%= @user.favorite_articles.count %>件)</a></li>
+				  <li><a href="#tab1" class="active"><i class="far fa-image"></i>(<%= @user.articles.count %>)</a></li>
+				  <li><a href="#tab2" class=""><i class="far fa-heart"></i>(<%= @user.favorite_articles.count %>)</a></li>
 		　　</ul>
 		　　<div id="tab-contents" class="clearfix">
 				<div id="tab1" class="tab">
 					<% @articles.each do |article| %>
 						<div class="col-md-3">
 							<div>
-								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
+								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg", class: "img-rounded" %>
 							</div>
 							<div>
 								<%= link_to article.title, article_path(article) %>
@@ -55,7 +55,7 @@
 					<% @favorite_articles.each do |article| %>
 						<div class="col-md-3">
 							<div>
-								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg" %>
+								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg", class: "img-rounded" %>
 							</div>
 							<div>
 								<%=link_to article.title, article_path(article.id) %>

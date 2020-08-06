@@ -23,18 +23,23 @@
   margin-bottom: 40px;
 }
 .header-border-bottom {
-  border-bottom: 3px solid #ccc;
+  border-bottom: 3px solid #EEEEEE;
+  margin-bottom: 0;
 }
-
+body {
+  font-family: ヒラギノ丸ゴ ProN;
+}
 .weiter {
-	margin: 0 0 50px 50px;
-	font-family: frank-new,sans-serif;
-    font-style: normal;
-    font-weight: 900;
-    font-feature-settings: "palt";
-    font-size: 30px;
-    color: #000;
+  margin: 0 0 50px 50px;
+  font-family: ヒラギノ丸ゴ ProN;
+  font-style: normal;
+  font-weight: 900;
+  font-feature-settings: "palt";
+  font-size: 30px;
 }
 .nav {
 	margin-top: 30px;
+  margin-right: 10px;
+  font-size: 30px;
+  font-family: ヒラギノ丸ゴ ProN;
 }

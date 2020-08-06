@@ -86,13 +86,11 @@
 			</div>
 			<%= form_for [@article, @post_comment] do |f| %>
 			    <div class="row">
-			        <div class="col-sm-8">
+			        <div class="col-md-8">
 			            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
 			        </div>
 			    </div>
-			    <% if @article.user == current_user %>
 			    	<%= f.submit "送信する", class: "btn btn-primary pull-right" %>
-			    <% end %>
 			<% end %>
 		<% end %>
 	</div>
