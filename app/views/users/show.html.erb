@@ -1,79 +1,118 @@
 <div class="container">
+	<h1 class="profile-title">Profile</h1>
 	<div class="row">
-		<h1>Profile</h1>
-		<div class="form-group">
-			<%= attachment_image_tag @user, :profile_image, size: "200x200", class: "img-circle", format: 'jpeg', fallback: "no_image.jpg" %>
+		<div class="col-md-6">
+			<div class="form-group">
+				<%= attachment_image_tag @user, :profile_image, size: "320x320", class: "img-circle", format: 'jpeg', fallback: "no_image.jpg" %>
+			</div>
+			<h4 class="profile-name">
+				<%= @user.name %>
+			</h4>
 		</div>
-		<div class="col-md-4">
-			<%= @user.name %>
+		<div class="col-md-6">
+			<div class="profile-article">
+				<p class="profile-article-count">
+					<%= @user.articles.count %>
+				</p>
+				<h5 class="profile-article-name">Articles</h5>
+			</div>
+			<div class="profile-follow">
+				<p class="profile-follower-count">
+					<%= @user.followings.count %>
+				</p>
+				<h5 class="follow-name">
+					<%=link_to "Follow", followingsandfollowers_user_path(@user) %>
+				</h5>
+			</div>
+			<div class="profile-follower">
+				<p class="profile-follower-count">
+					<%= @user.followers.count %>
+				</p>
+				<h5 class="follower-name">
+					<%=link_to "Follower", followingsandfollowers_user_path(@user) %>
+				</h5>
+			</div>
+			<div class="profile-goal">
+				<h4 class="goal">Goal：<%= @user.goal %></h4>
+			</div>
+			<div class="profile-introduction">
+				<h4 class="profile-introduction-name">Introduction</h4>
+				<%= @user.introduction %>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<%= @user.goal %>
-		</div>
-		<div class="col-md-8">
-			<%= @user.introduction %>
-		</div>
-		<div>
-			<p><%=link_to "フォロー", followingsandfollowers_user_path(@user) %><%= @user.followings.count %></p>
-			<p><%=link_to "フォロワー", followingsandfollowers_user_path(@user) %><%= @user.followers.count %></p>
+	</div>
+</div>
+<div class="continer">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="follow-check">
 			<!-- 自分をのぞいた人たちのみボタンを表示する -->
-			<% if current_user != @user %>
-				<% if @user.followed_by?(current_user) %>
-					<p><%=link_to "フォロー中", user_relationships_path(@user), method: :delete %></p>
-				<% else %>
-					<p><%=link_to "フォローする", user_relationships_path(@user), method: :post %></p>
+				<% if current_user != @user %>
+					<% if @user.followed_by?(current_user) %>
+						<h5 class="during-follow"><%=link_to "フォロー中", user_relationships_path(@user), method: :delete %></h5>
+					<% else %>
+						<h5 class="do-follow"><%=link_to "フォローする", user_relationships_path(@user), method: :post %></h5>
+					<% end %>
 				<% end %>
-			<% end %>
+			</div>
+			<div class="profile-edit">
+				<% if @user == current_user %>
+					<h5 class="edit-title"><%= link_to "プロフィール編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %></h5>
+				<% end %>
+			</div>
 		</div>
-
-		<div class="wrap">
-			<ul id="tab-menu" class="clearfix">
-				  <li><a href="#tab1" class="active"><i class="far fa-image"></i>(<%= @user.articles.count %>)</a></li>
-				  <li><a href="#tab2" class=""><i class="far fa-heart"></i>(<%= @user.favorite_articles.count %>)</a></li>
-		　　</ul>
-		　　<div id="tab-contents" class="clearfix">
-				<div id="tab1" class="tab">
+	</div>
+</div>
+<div class="container">
+	<div class="wrap">
+		<ul id="tab-menu" class="clearfix">
+			<li><a href="#tab1" class="active"><i class="far fa-image"></i></a></li>
+			<li><a href="#tab2" class=""><i class="far fa-heart"></i></a></li>
+		</ul>
+		<div id="tab-contents" class="clearfix">
+			<div id="tab1" class="tab">
+				<div class="row">
 					<% @articles.each do |article| %>
-						<div class="col-md-3">
-							<div>
-								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg", class: "img-rounded" %>
+						<div class="col-md-4">
+							<div class="my-article-img">
+								<%= attachment_image_tag article, :image, size: "300x200", fallback: "no_image.jpg", class: "img-rounded" %>
 							</div>
-							<div>
-								<%= link_to article.title, article_path(article) %>
-							</div>
-							<div>
+							<div class="profile-favo">
 								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
 							</div>
-							<div>
+							<div class="profile-comment">
 								<i class="fa fa-comment"></i><%= article.post_comments.count %>
+							</div>
+							<div class="profile-article-title">
+								<%= link_to article.title, article_path(article) %>
 							</div>
 						</div>
 			    	<% end %>
 			    </div>
+			</div>
 
-				<div id="tab2" class="tab">
+			<div id="tab2" class="tab">
+				<div class="row">
 					<% @favorite_articles.each do |article| %>
-						<div class="col-md-3">
-							<div>
-								<%= attachment_image_tag article, :image, size: "150x90", fallback: "no_image.jpg", class: "img-rounded" %>
+						<div class="col-md-4">
+							<div class="my-article-img">
+								<%= attachment_image_tag article, :image, size: "300x200", fallback: "no_image.jpg", class: "img-rounded" %>
 							</div>
-							<div>
-								<%=link_to article.title, article_path(article.id) %>
-							</div>
-							<div>
+							<div class="profile-favo">
 								<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i><%= article.favorites.count %>
 							</div>
-							<div>
+							<div class="profile-comment">
 								<i class="fa fa-comment"></i><%= article.post_comments.count %>
+							</div>
+							<div class="profile-article-title">
+								<%= link_to article.title, article_path(article) %>
 							</div>
 						</div>
 					<% end %>
+					</div>
 				</div>
 			</div>
 		</div>
-			<% if @user == current_user %>
-				<%= link_to "編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %>
-			<% end %>
 	</div>
 </div>
 

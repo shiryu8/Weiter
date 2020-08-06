@@ -20,6 +20,7 @@ h1{
   width: 100%;
   max-width: 100%;
   margin: 0 auto;
+  border: 1px solid #000;
 }
 
 .clearfix:after{
@@ -32,6 +33,7 @@ h1{
   float: left;
   list-style-type: none;
   width: 50%;
+  font-size: 30px;
 }
 
 #tab-menu a {
@@ -56,4 +58,50 @@ h1{
 #tab-contents p{
   color:#000;
   line-height: 2.5;
+}
+.form-group {
+  margin-left: 115px;
+}
+.profile-title {
+  border-bottom: 6px solid #FFBEDA;
+  width: 150px;
+  margin: 0px auto 40px auto;
+}
+.profile-name {
+  text-align: center;
+  font-size: 30px;
+}
+.profile-article, .profile-follow, .profile-follower {
+  font-size: 40px;
+  float: left;
+  text-align: center;
+  padding-right:30px;
+}
+.profile-article-name, .follow-name, .follower-name {
+  font-size: 30px;
+  color: #337ab7;
+}
+.profile-goal {
+  padding-top: 120px;
+}
+.goal {
+  font-size: 20px;
+  float: left;
+}
+.profile-introduction-name {
+  padding-top: 40px;
+  font-size: 20px;
+}
+.profile-edit {
+  width: 1200px;
+}
+.profile-favo, .profile-comment {
+  float:left;
+  padding-right: 10px;
+}
+.profile-article-title {
+  padding-top: 20px;
+}
+.my-article-img {
+  padding-top: 10px;
 }
