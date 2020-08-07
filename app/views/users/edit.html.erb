@@ -5,16 +5,16 @@
 		<%= link_to "ログアウト", destroy_user_session_path, class: 'btn btn-danger pull-right', "data-confirm" => "本当にログアウトしますか？", method: :delete %>
 	</div>
 
-	<h1 class="articleedit-title">Profile Edit</h1>
+	<h1 class="useredit-title">Profile Edit</h1>
 
 	<%= form_for(@user, url: user_path) do |f| %>
-		<div class="articleedit-img">
+		<div class="useredit-img">
 			<h3 class="articleedit-img-title">Profile Image</h3>
 			<%= f.attachment_field :profile_image %>
 			<%= attachment_image_tag @user, :profile_image, size: "300x300", class: "img-circle", format: 'jpeg', fallback: "no_image.jpg" %>
 		</div>
 
-		<div class="articleedit-main">
+		<div class="useredit-main">
 
 			<div class="">
 				<%= f.label :name, 'ユーザーネーム' %>
@@ -35,7 +35,7 @@
 			<%= f.label :introduction, '自己紹介' %>
 			<%= f.text_area :introduction, :maxlength => "255", :size => "80x5",  class: 'form-control'  %>
 			</div>
-			<div class="articleedit-button">
+			<div class="useredit-button">
 				<%= f.submit 'プロフィール編集を完了する', class: 'btn btn-primary pull-right' %>
 			</div>
 		</div>

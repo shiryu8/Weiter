@@ -5,6 +5,10 @@
 
   @charset "UTF-8";
 
+
+//User show/
+
+
 * {
   margin: 0;
   padding: 0;
@@ -60,6 +64,7 @@ h1{
   color:#000;
   line-height: 2.5;
 }
+
 .form-group {
   margin-left: 115px;
 }
@@ -108,29 +113,70 @@ h1{
 }
 
 
-.articleedit-title {
+//user edit/
+
+.useredit-title {
   margin: 5px auto 40px auto;
   border-bottom: 4px solid #CBFFD3;
   width: 250px;
 }
-.articleedit-img {
+.useredit-img {
   width: 400px;
   height: 450px;
   float: left;
   margin-top: 20px;
   margin-left: 125px;
 }
-.articleedit-img-title {
+.useredit-img-title {
   font-size: 27px;
   margin: 0 auto 15px auto;
 }
-.articleedit-main {
+.useredit-main {
   width: 550px;
   height: 450px;
   float: left;
   font-size: 22px;
   line-height: 2.0;
 }
-.articleedit-button {
+.useredit-button {
   margin-top: 10px;
+}
+
+
+//followingsandfollowers/
+
+.user-followers {
+  float: left;
+  width: 500px;
+  margin-left: 60px;
+}
+.userfollowers {
+  text-align: center;
+  border-bottom: 4px solid #CBFFD3;
+  width: 250px;
+  margin: 0 auto;
+}
+.userfollowers-name {
+  font-size: 20px;
+  margin-top: 50px;
+}
+.userfollowers-detail {
+  margin-bottom: 10px;
+}
+.user-followings {
+  float: left;
+  width: 500px;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 3px solid #DDDDDD;
+}
+.userfollowings {
+  border-bottom: 4px solid #BAD3FF;
+  width: 200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.userfollowings-name {
+  font-size: 20px;
+  margin-top: 50px;
 }

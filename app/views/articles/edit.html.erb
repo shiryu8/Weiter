@@ -1,24 +1,26 @@
 <div class="container">
-    <div class="row">
-        <h1>編集</h1>
+    <div class="articleedit">
+        <h1>Article Edit</h1>
            <%= form_for(@article) do |f| %>
-                <div class="">
-                	<h4>イメージ</h4>
-                	<%= attachment_image_tag @article, :image, size: "600x360" %>
+                <div class="editarticle">
+                	<h3>Image</h3>
+                	<%= attachment_image_tag @article, :image, size: "600x360", class: "img-rounded" %>
                     <%= f.file_field :image %>
                 </div>
 
-                <div class="">
-                	<h4>タイトル</h4>
+                <div class="editarticle">
+                	<h3>タイトル</h3>
                 	<%= f.text_field :title, class: 'form-control' %>
                 </div>
 
-                <div class="">
-                	<h4>キャプション</h4>
-                	<%= f.text_area :content, :size => "80x5",  class: 'form-control' %>
+                <div class="editarticle">
+                	<h3>キャプション</h3>
+                	<%= f.text_area :content, :size => "80x20",  class: 'form-control' %>
                 </div>
 
-                 <%= f.submit "保存" %>
+                <div class="editarticle-button">
+                    <%= f.submit "　　　　保存　　　　", class:'btn btn-primary' %>
+                </div>
 
              <% end %>
     </div>

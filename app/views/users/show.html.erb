@@ -72,7 +72,7 @@
 		<div id="tab-contents" class="clearfix">
 			<div id="tab1" class="tab">
 				<div class="row">
-					<% @articles.each do |article| %>
+					<% @user.articles.each do |article| %>
 						<div class="col-md-4">
 							<div class="my-article-img">
 								<%= attachment_image_tag article, :image, size: "300x200", fallback: "no_image.jpg", class: "img-rounded" %>
