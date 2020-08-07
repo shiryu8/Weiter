@@ -33,7 +33,7 @@
 			        <% end %>
 			    <!-- 自分のプロフィールをフォローしている人のフォロワー欄に載せる -->
 			    <% else %>
-			    	<div>
+			    	<div class="userfollowers-name2">
 					    <%= link_to user_path(follower_user) do %>
 				        	<%= attachment_image_tag follower_user, :profile_image, size: "120x120", fallback: "no_image.jpg", class: "img-circle" %>
 			        	<% end %>
@@ -59,9 +59,9 @@
 				            <% end %>
 			        	</div>
 			    <% else %>
-			    	<div>
+			    	<div class="userfollowings-name2">
 					    <%= link_to user_path(following_user) do %>
-				        	<%= attachment_image_tag following_user, :profile_image, size: "120x60", fallback: "no_image.jpg" %>
+				        	<%= attachment_image_tag following_user, :profile_image, size: "120x120", fallback: "no_image.jpg", class: "img-circle" %>
 			        	<% end %>
 			        	<%= link_to following_user.name, user_path(following_user) %>
 				    </div>
