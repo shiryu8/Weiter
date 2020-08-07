@@ -23,7 +23,7 @@
   margin-bottom: 40px;
 }
 .header-border-bottom {
-  border-bottom: 3px solid #EEEEEE;
+  border-bottom: 3px solid #DDDDDD;
   margin-bottom: 0;
 }
 body {
@@ -42,4 +42,67 @@ body {
   margin-right: 10px;
   font-size: 30px;
   font-family: ヒラギノ丸ゴ ProN;
+}
+.log-in {
+  font-size: 50px;
+  margin: 40px auto 40px auto;
+}
+.article-sign-in {
+  margin: 40px auto 30px auto;
+  width: 400px;
+  text-align: center;
+  line-height: 2.0;
+  border: 2px solid #DDDDDD;
+  padding-bottom: 30px;
+}
+.sign-in {
+  font-size: 25px;
+}
+.signin-mail {
+  margin-bottom: 20px;
+}
+.sign-up-main {
+  margin: 0 auto;
+  width: 800px;
+  height: 500px;
+}
+.sign-up-explanation {
+  float: left;
+  width: 300px;
+  height: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding-left: 20px;
+}
+.weitertoha {
+  font-size: 35px;
+  width: 220px;
+  margin: 50px auto 20px auto;
+  border-bottom: 4px solid #DCC2FF;
+}
+.weitertoha-explanation {
+  line-height: 2.0;
+  font-size: 20px;
+}
+.article-sign-up {
+  float: left;
+  margin: 10px 10px 10px 60px;
+  text-align: center;
+  width: 360px;
+  height: 550px;
+  border: 2px solid #DDDDDD;
+}
+.signup {
+  font-size: 40px;
+  margin: 40px auto 40px auto;
+}
+.sign-up-field {
+  font-size: 23px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+.sign-up-actions {
+  line-height: 1.5;
+  font-size: 20px;
+  margin: 70px auto 20px auto;
 }
