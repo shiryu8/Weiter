@@ -1,6 +1,6 @@
 <div class="container">
-	<div class="row">
-	    <h1>新規投稿</h1>
+	<div class="newarticle-main">
+	    <h1 class="newpost-title">New Post</h1>
 	    <%= form_for(@article_new) do |f| %>
 		    <% if @article_new.errors.any? %>
 			    <div id="error_explanation">
@@ -13,24 +13,29 @@
 			    </div>
 		    <% end %>
 
-	    	<div class="col-sm-12">
-		    	<h4>イメージ</h4>
-		    	<%= f.attachment_field :image, size: "600x360" %>
+	    	<div class="">
+		    	<h4 class="newarticle">イメージ</h4>
+		    	<%= f.attachment_field :image %>
 	    	</div>
 
-	    	<div class="col-sm-6">
-		    	<h4>タイトル</h4>
+	    	<div class="">
+		    	<h4 class="newarticle">タイトル</h4>
 		    	<%= f.text_field :title, placeholder:"タイトルを書く", class: 'form-control' %>
 		    </div>
 
-	    	<div class="col-sm-12">
-		    	<h4>キャプション</h4>
-		    	<%= f.text_area :content, placeholder:"キャプションを書く", :size => "80x5",  class: 'form-control' %>
+	    	<div class="newarticle-caption">
+		    	<h4 class="newarticle">キャプション</h4>
+		    	<%= f.text_area :content, placeholder:"キャプションを書く", :size => "80x20", class: 'form-control' %>
 		    </div>
 
-	     <%= f.submit "投稿", class: 'btn btn-primary pull-right' %>
-	     <%= link_to 'キャンセル', articles_path, class: 'btn btn-primary pull-right' %>
+		    <div class="newarticle-button">
+		    	<%= f.submit "　　　　　　　　　　　　　　New Post　　　　　　　　　　　　　　　", class: 'btn btn-primary' %>
+		    </div>
 
 	    <% end %>
     </div>
+
+    <div class="newarticle-cancel">
+    	<%= link_to 'キャンセル', articles_path, class: 'btn btn-danger pull-right' %>
+	</div>
 </div>
