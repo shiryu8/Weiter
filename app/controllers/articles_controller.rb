@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
 		#いいね順に投稿をランキング形式
 		@all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
 		@articles = Article.search(params[:search])
+		@hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
 	end
 
 	def show
@@ -29,6 +30,13 @@ class ArticlesController < ApplicationController
 		@user = @article.user
 		@post_comment = PostComment.new
 	end
+
+	def hashtag
+		@user = current_user
+		@hashtag = Hashtag.find_by(hashname: params[:name])
+      	@article = @hashtag.articles.page(params[:page]).per(20).reverse_order
+      	@hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
+    end
 
 	def edit
 		@article = Article.find(params[:id])
@@ -51,7 +59,7 @@ class ArticlesController < ApplicationController
 
 		private
 			def article_params
-				params.require(:article).permit(:title, :content, :image, :user_id)
+				params.require(:article).permit(:title, :content, :image, :user_id, :hashbody, hashtag_ids: [])
 			end
             def current_user_article?
             	article = Article.find(params[:id])

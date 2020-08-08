@@ -27,15 +27,17 @@
 		    	<h4 class="newarticle">キャプション</h4>
 		    	<%= f.text_area :content, placeholder:"キャプションを書く", :size => "80x20", class: 'form-control' %>
 		    </div>
-
+		    <div class="newarticle-caption">
+		    	<h4 class="newarticle-hashtag">ハッシュタグ</h4>
+		    	<%= f.text_area :hashbody, placeholder:"キャプションを書く", size:"70x2", class: 'form-control' %>
+		    </div>
 		    <div class="newarticle-button">
 		    	<%= f.submit "　　　　　　　　　　　　　　New Post　　　　　　　　　　　　　　　", class: 'btn btn-primary' %>
 		    </div>
 
 	    <% end %>
+	    <div class="newarticle-cancel">
+    		<%= link_to 'キャンセル', articles_path, class: 'btn btn-danger pull-right' %>
+		</div>
     </div>
-
-    <div class="newarticle-cancel">
-    	<%= link_to 'キャンセル', articles_path, class: 'btn btn-danger pull-right' %>
-	</div>
 </div>

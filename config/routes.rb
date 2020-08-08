@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   	resources :post_comments, only: [:create, :destroy]
   end
 
+  get '/article/hashtag/:name' => 'articles#hashtag'
+
 
   resources :users, only: [:show, :edit, :update] do
   	resource :relationships, only: [:create, :destroy]

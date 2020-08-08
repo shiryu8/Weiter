@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_31_081511) do
+ActiveRecord::Schema.define(version: 2020_08_08_053941) do
 
   create_table "articles", force: :cascade do |t|
     t.text "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_07_31_081511) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "hashbody", default: ""
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -26,6 +27,22 @@ ActiveRecord::Schema.define(version: 2020_07_31_081511) do
     t.integer "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtag_articles", force: :cascade do |t|
+    t.integer "article_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_hashtag_articles_on_article_id"
+    t.index ["hashtag_id"], name: "index_hashtag_articles_on_hashtag_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "post_comments", force: :cascade do |t|
@@ -49,6 +66,8 @@ ActiveRecord::Schema.define(version: 2020_07_31_081511) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"

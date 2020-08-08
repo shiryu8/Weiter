@@ -48,6 +48,8 @@
 					</div>
 					<div class="articleshow-content">
 						<p class="articleshow-content"><%= @article.content %></p>
+                        <!-- helperで作成したメソッドを呼び出し(articles_helper.rb) -->
+						<%= render_with_hashtags(@article.hashbody) %>
 					</div>
 					<div class="">
 				    	<div class="float-wrapper">
