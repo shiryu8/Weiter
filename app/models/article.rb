@@ -31,7 +31,7 @@ class Article < ApplicationRecord
       #作成したArticleを探す
       article = Article.find_by(id: id)
       # hashbodyに打ち込まれたハッシュタグを検出
-      hashtags = article.hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+      hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
       #mapで繰り返すことにより、複数のハッシュタグがarticleに保存
       hashtags.uniq.map do |hashtag|
         # ハッシュタグは先頭の#を外した上で保存

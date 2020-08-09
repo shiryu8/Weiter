@@ -18,11 +18,17 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		@articles = Article.all
+		@articles = Article.order("created_at DESC")
 		#いいね順に投稿をランキング形式
 		@all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
+		#検索機能
 		@articles = Article.search(params[:search])
 		@hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
+	end
+
+	def following_articles
+		@user = current_user
+		@users = @user.followings.order("created_at DESC")
 	end
 
 	def show
@@ -34,7 +40,7 @@ class ArticlesController < ApplicationController
 	def hashtag
 		@user = current_user
 		@hashtag = Hashtag.find_by(hashname: params[:name])
-      	@article = @hashtag.articles.page(params[:page]).per(20).reverse_order
+      	@article = @hashtag.articles.all
       	@hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
     end
 

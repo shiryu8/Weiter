@@ -15,7 +15,12 @@
 
                 <div class="editarticle">
                 	<h3>キャプション</h3>
-                	<%= f.text_area :content, :size => "80x20",  class: 'form-control' %>
+                	<%= f.text_area :content, size: "80x20",  class: 'form-control' %>
+                </div>
+
+                <div class="newarticle-caption">
+                    <h4 class="newarticle-hashtag">ハッシュタグ</h4>
+                    <%= f.text_area :hashbody, size:"70x2", class: 'form-control' %>
                 </div>
 
                 <div class="editarticle-button">

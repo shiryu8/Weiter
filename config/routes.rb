@@ -12,7 +12,13 @@ Rails.application.routes.draw do
   	resources :post_comments, only: [:create, :destroy]
   end
 
-  get '/article/hashtag/:name' => 'articles#hashtag'
+ #ハッシュタグした投稿の一覧
+  get '/article/hashtag/:name', to: 'articles#hashtag'
+
+ #フォローしたユーザーの投稿一覧
+  get 'following_articles', to: 'articles#following_articles'
+
+
 
 
   resources :users, only: [:show, :edit, :update] do

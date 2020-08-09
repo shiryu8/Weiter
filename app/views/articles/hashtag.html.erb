@@ -2,37 +2,48 @@
 <div class="container">
     <h2 class="search-title">#<%= @hashtag.hashname %>（<%= @article.count %>）</h2>
     <div class="row">
-        <div class="col-md-4">
-                <div class="">
+        <div class="col-xs-12">
+            <div class="row">
                 <% @article.each do |article| %>
-                    <div class= "">
-                        <%= link_to article_path(article) do %>
-                            <ul class="">
-                                <li>
-                                    <%= attachment_image_tag article, :image ,size:'360x240', format:'jpg', class: "img-rounded" %>
-                                </li>
-                            </ul>
-                        <% end %>
-                        <div id="favorites_buttons_<%= article.id %>", class="hashtag-favo">
-                            <%= render partial: 'favorites/favorite', locals: { article: article} %>
-                        </div>
-                        <div class="hashtag-comment">
-                            <i class="fa fa-comment"></i><%= article.post_comments.count %>
-                        </div>
-                        <div class="">
-                            <h3 class="hashtag-title">
-                                <%= link_to article.title, article_path(article) %>
-                            </h3>
-                        </div>
-                        <div class="hashtag-profileimg">
-                            <%= link_to user_path(article.user) do %>
-                                <%= attachment_image_tag article.user, :profile_image, fallback: "no_image.jpg", class: "img-circle", size: "60x60" %>
+                    <div class="col-xs-4">
+                        <div class= "hashtag-article">
+                            <%= link_to article_path(article) do %>
+                              <%= attachment_image_tag article, :image ,size:'360x240', format:'jpg', class: "img-rounded" %>
                             <% end %>
-                                by<%= link_to article.user.name,  user_path(article.user) %>
+                            <div id="favorites_buttons_<%= article.id %>", class="hashtag-favo">
+                                <%= render partial: 'favorites/favorite', locals: { article: article} %>
+                            </div>
+                            <div class="hashtag-comment">
+                                <i class="fa fa-comment"></i><%= article.post_comments.count %>
+                            </div>
+                            <div class="">
+                                <h4 class="hashtag-title">
+                                    <%= link_to article.title, article_path(article) %>
+                                </h4>
+                            </div>
+                            <div class="hashtag-profileimg">
+                                <%= link_to user_path(article.user) do %>
+                                    <%= attachment_image_tag article.user, :profile_image, fallback: "no_image.jpg", class: "img-circle", size: "60x60" %>
+                                <% end %>
+                                    by<%= link_to article.user.name,  user_path(article.user) %>
+                            </div>
                         </div>
                     </div>
                 <% end %>
             </div>
-            </div>
+        </div>
+    </div>
+
+
+    <div class="">
+        <h3 class="hashtag-index-name">ハッシュタグ一覧</h3>
+        <div class= "">
+            <% @hashtags.sort.reverse.each do |count| %>
+                    <% count[1].each do |hashtag| %>
+                        <p class="hashtag-span"><%= link_to  "##{hashtag.hashname} (#{hashtag.articles.count}) ","/article/hashtag/#{hashtag.hashname}" %>
+                        </p>
+                    <% end %>
+            <% end %>
+        </div>
+    </div>
 </div>
-<%= paginate @article %>

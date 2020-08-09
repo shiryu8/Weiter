@@ -22,7 +22,10 @@
                 <ul class="nav navbar-nav navbar-right">
                   <% if user_signed_in? %>
                     <li>
-                      <%= link_to '', articles_path, class: "fas fa-home" %>
+                      <%= link_to '', articles_path, class: "fas fa-archway" %>
+                    </li>
+                    <li>
+                      <%= link_to '', following_articles_path, class: 'fas fa-home' %>
                     </li>
                     <li>
                       <%= link_to '', user_path(current_user), class: "far fa-laugh-wink" %>
@@ -32,13 +35,13 @@
                     </li>
                   <% else %>
                     <li>
-                      <%= link_to "", root_path, class: "fas fa-archway" %>
+                      <%= link_to '', root_path, class: "fas fa-archway" %>
                     </li>
                     <li>
-                      <%= link_to "",new_user_registration_path, class: "fas fa-user-plus" %>
+                      <%= link_to '',new_user_registration_path, class: "fas fa-user-plus" %>
                     </li>
                     <li>
-                      <%= link_to "", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %>
+                      <%= link_to '', new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %>
                     </li>
                   <% end %>
                 </ul>

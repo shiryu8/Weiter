@@ -33,6 +33,7 @@
 		<div class="articleshow-main">
 			<div class="row">
 					<div class="articleshow-img">
+						<%= l @article.created_at, format: :long %>
 						<p><%= attachment_image_tag @article, :image, class: "img-rounded", size: "600x400" %></p>
 					</div>
 					<!-- 部分的に更新したい場所（いいね機能） -->
@@ -69,7 +70,7 @@
 					                    <div class="comment-author clearfix">
 					                        <%= link_to post_comment.user.name, user_path(post_comment.user) %>
 						                    <span class="comment-meta">
-						                    	<span class="comment-date"><%= post_comment.created_at.strftime('%Y/%m/%d') %></span>
+						                    	<span class="comment-date"><%= l post_comment.created_at %></span>
 						                    </span>
 					                    </div>
 					                	<div class="comment-entry">
