@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		@articles = Article.order("created_at DESC")
+		@articles = Article.all.order("created_at DESC")
 		#いいね順に投稿をランキング形式
 		@all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
 		#検索機能

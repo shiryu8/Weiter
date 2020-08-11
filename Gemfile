@@ -76,3 +76,6 @@ gem 'jquery-rails'
 gem 'kaminari'
 
 gem 'i18n_generators'
+
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

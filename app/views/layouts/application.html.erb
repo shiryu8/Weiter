@@ -8,6 +8,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
   </head>
 
   <body>
@@ -29,6 +31,9 @@
                     </li>
                     <li>
                       <%= link_to '', user_path(current_user), class: "far fa-laugh-wink" %>
+                    </li>
+                    <li>
+                      <%= link_to '', user_event_path(current_user), class: "far fa-calendar-alt" %></i>
                     </li>
                     <li>
                       <%= link_to '', new_article_path, class: "far fa-plus-square" %>
@@ -58,5 +63,11 @@
           </div>
         <% end %> -->
     <%= yield %>
+
+    <footer>
+      <div class="container footer">
+          <p class="footer-text">©2020 Weiter From Akeru Iwamoto</p>
+      </div>
+    </footer>
   </body>
 </html>

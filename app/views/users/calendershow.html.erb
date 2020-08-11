@@ -1,0 +1,101 @@
+
+<div class="container">
+    <h1 class="text-center">カレンダー</h1>
+    <!-- カレンダーの表示 -->
+    <div id="calendar"></div>
+    <!-- もしユーザーがログインしていたら -->
+    <% if user_signed_in? %>
+        <!-- ページのparams.idがログインユーザー.idと同じなら -->
+        <% if @user.id == current_user.id %>
+            <div id="inputScheduleForm" class="modal fade" tabindex="-1">
+                <div class="modal-dialog modal-nm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">スケジュール登録</h4>
+                        </div>
+                        <div class="modal-body">
+                            <%= form_with model: @event, url: events_path do |f| %>
+                                <div  class="col">
+                                        <p>
+                                            <span>タイトル</span>
+                                            <span><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
+                                        </p>
+                                        <span>場所</span>
+                                        <span><%= f.text_field :place, class: "form-control", placeholder: "場所を入力してください" %></span>
+                                        <span>開始日時</span>
+                                        <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
+                                        <span>終了日時</span>
+                                        <span><%= f.datetime_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
+                                        <span>詳細
+                                        <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %></span>
+                                </div>
+                                <div class="modal-footer">
+                                    <%= f.submit "登録する", class: "btn btn-primary" %>
+                                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- 編集 ------------------------------------------------------------------>
+            <div id="inputEditForm">
+                <%= render 'events/edit', events: @events %>
+            </div>
+        <% end %>
+    <% end %>
+        <script>
+        // CRUDを行う際にCSRF対策のtokenを発行
+            $(document).ready(function() {
+            var prepare = function(options, originalOptions, jqXHR) {
+              var token;
+              if (!options.crossDomain) {
+                token = $('meta[name="csrf-token"]').attr('content');
+                if (token) {
+                  return jqXHR.setRequestHeader('X-CSRF-Token', token);
+                }
+              }
+            };
+            }
+            )
+
+            // カレンダー表示
+            $('#calendar').fullCalendar ({
+                header: {
+                    left: 'prev,next today',
+                    center: 'month,agendaWeek,agendaDay',
+                    right: 'title'
+                },
+
+                buttonText: {
+                      prev: "<",
+                      next: ">"
+                },
+
+                timezone: 'JST', //日本時間に
+                events: '/users/<%= @user.id %>/event.json',  //jsonファイルへ
+                navLinks: true,  //日付がリンクになりクリックするとその日のイベント一覧を表示
+                selectable: true,  // 選択可
+                selectHelper: true,  // 選択時にプレースホルダーを描画
+                timeFormat: "HH:mm~",  //イベントの時間表示を２４時間に
+                eventColor: '#63ceef',  //イベントの色を変える
+                eventTextColor: '#000000',  //イベントの文字色を変える
+                // 日付クリック
+                dayClick : function ( date , jsEvent , view ) {
+                    $('#inputScheduleForm').modal('show');
+                    },
+
+                // eventクリックで編集、削除
+                eventClick : function(event, jsEvent , view) {
+                    jsEvent.preventDefault();
+                    $(`#inputScheduleEditForm${event.id}`).modal('show');
+                },
+
+                eventMouseover : function(event, jsEvent , view) {
+                    jsEvent.preventDefault();
+                }
+            })
+
+        </script>
+</div>

@@ -13,7 +13,7 @@
 		        			<a href=""><%= link_to "編集", edit_article_path(@article), method: :get %></a>
 		        		</li>
 		        		<li>
-		        			<a href=""><%= link_to "削除", article_path(@article), method: :delete %></a>
+		        			<a href=""><%= link_to "削除", article_path(@article), "data-confirm" => "本当に削除しますか？", method: :delete %></a>
 		        		</li>
 	        		</ul>
 	    		</nav>

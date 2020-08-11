@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require fullcalendar
  */
 
 @import "bootstrap-sprockets";
@@ -27,7 +28,7 @@
   margin-bottom: 0;
 }
 body {
-  font-family: ヒラギノ丸ゴ ProN;
+  font-family: inherit;
 }
 .weiter {
   margin: 0 0 50px 50px;
@@ -105,4 +106,16 @@ body {
   line-height: 1.5;
   font-size: 20px;
   margin: 70px auto 20px auto;
+}
+
+.footer {
+  text-align: center;
+  display: block;
+  margin-top: 50px;
+  padding: 30px 0;
+  border-top: 3px solid #DDDDDD;
+  height: 140px;
+}
+.footer-text {
+  color: #000;
 }

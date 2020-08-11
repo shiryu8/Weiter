@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     @favorite_articles = @user.favorite_articles
   end
 
+  def calendershow
+    @user = User.find(params[:user_id])
+    @events = Event.where(user_id: @user.id)
+    @event = Event.new
+  end
+
   def edit
   	@user = User.find(params[:id])
   end
