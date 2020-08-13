@@ -22,7 +22,8 @@ class ArticlesController < ApplicationController
 		#いいね順に投稿をランキング形式
 		@all_ranks = Article.find(Favorite.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
 		#検索機能
-		@articles = Article.search(params[:search])
+		@articles = Article.search(params[:search]).order("created_at DESC")
+
 		@hashtags = Hashtag.all.to_a.group_by{ |hashtag| hashtag.articles.count}
 	end
 

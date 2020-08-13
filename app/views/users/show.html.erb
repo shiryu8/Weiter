@@ -42,31 +42,38 @@
 				<h4 class="profile-introduction-name">Introduction</h4>
 				<%= @user.introduction %>
 			</div>
-		</div>
+	<div class="profile-edit">
+		<!-- 自分をのぞいた人たちのみボタンを表示する -->
+		<% if current_user != @user %>
+			<% if @user.followed_by?(current_user) %>
+				<h5><%=link_to "フォロー中", user_relationships_path(@user), method: :delete, class: 'btn btn-primary pull-right' %></h5>
+			<% else %>
+				<h5><%=link_to "フォローする", user_relationships_path(@user), method: :create, class: 'btn btn-primary pull-right' %></h5>
+			<% end %>
+		<% else %>
+			<h5><%= link_to "プロフィールを編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %></h5>
+		<% end %>
 	</div>
-</div>
-<div class="continer">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="profile-edit">
-			<!-- 自分をのぞいた人たちのみボタンを表示する -->
-				<% if current_user != @user %>
-					<% if @user.followed_by?(current_user) %>
-						<h5 class="during-follow"><%=link_to "フォロー中", user_relationships_path(@user), method: :delete, class: 'btn btn-primary pull-right' %></h5>
-					<% else %>
-						<h5 class="do-follow"><%=link_to "フォローする", user_relationships_path(@user), method: :create, class: 'btn btn-primary pull-right' %></h5>
-					<% end %>
-				<% end %>
-			</div>
-			<div class="profile-edit">
-				<% if @user == current_user %>
-					<h5 class="edit-title"><%= link_to "プロフィールを編集", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %></h5>
-				<% end %>
-			</div>
-		</div>
+	<div class="profile-chat">
+		<% unless @user.id == current_user.id %>
+			<!-- チャットルームが作成している時 -->
+		    <% if @isRoom == true %>
+		    	<p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary">チャットへ</a></p>
+		    <!-- 作成されていない時 -->
+		  	<% else %>
+		  		<!-- Roomsテーブルにform_forインスタンス変数 -->
+		    	<%= form_for (@room) do |f| %>
+		    		<!-- Entriesテーブルにfields_forインスタンス変数 -->
+		      		<%= fields_for @entry do |e| %>
+		        		<%= e.hidden_field :user_id, value: @user.id %>
+		      		<% end %>
+		      	<%= f.submit "チャットを始める", class:"btn btn-primary user-show-chat"%>
+		    	<% end %>
+		  	<% end %>
+		<% end %>
 	</div>
-</div>
-<div class="container">
+	</div>
+	</div>
 	<div class="wrap">
 		<ul id="tab-menu" class="clearfix">
 			<li><a href="#tab1" class="active"><i class="far fa-image"></i></a></li>
@@ -112,7 +119,6 @@
 							</div>
 						</div>
 					<% end %>
-					</div>
 				</div>
 			</div>
 		</div>

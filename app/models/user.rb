@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   has_many :events
 
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
 
   #自分がフォローしているユーザーとの関連
   #フォローする側のUserから見て、フォローされる側のUserを集める。なので親はfollowing_id(フォローする側)

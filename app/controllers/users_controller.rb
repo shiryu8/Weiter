@@ -7,6 +7,29 @@ class UsersController < ApplicationController
   	@articles = current_user.articles
     #ユーザーがファボした投稿を取得する
     @favorite_articles = @user.favorite_articles
+
+    #DM機能
+    #ログインしているユーザーとチャットをしたい相手ユーザーを探す
+    @currentUserEntry=Entry.where(user_id: current_user.id)
+    @userEntry=Entry.where(user_id: @user.id)
+
+    #ログインしているユーザーではない場合
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          #Entriesテーブル内にあるroom_idが共通しているユーザー同士の場合
+          if cu.room_id == u.room_id then
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      #ルームが作成されていない場合
+      unless @isRoom
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def calendershow

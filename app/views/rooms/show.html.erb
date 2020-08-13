@@ -1,0 +1,66 @@
+
+<div class="container">
+    <div id="your_container">
+        <!-- チャットの外側部分① -->
+        <div id="bms_messages_container">
+            <!-- ヘッダー部分② -->
+            <div id="bms_chat_header">
+                <!--ステータス-->
+                <div id="bms_chat_user_status">
+                    <% @entries.each do |e| %>
+                        <% if current_user.id != e.user.id %>
+                            <!--ステータスアイコン-->
+                            <div id="bms_status_icon"><%= attachment_image_tag e.user, :profile_image, size: "45x45", class: "img-circle", format: 'jpeg', fallback: "no_image.jpg" %></div>
+                            <!--ユーザー名-->
+                            <div id="bms_chat_user_name"><%= e.user.name %></div>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+
+            <!-- タイムライン部分③ -->
+            <div id="bms_messages">
+                <div class="bms_message bms_left">
+                    <div class="bms_message_box">
+                      <% if @messages.present? %>
+                          <% @messages.each do |m| %>
+                              <% if current_user.id != m.user.id %>
+                                  <div class="bms_message_content">
+                                      <div class="bms_message_text"><%= m.talk_message %><%= m.created_at.strftime("%m-%d %H:%M")%></div>
+                                  </div>
+                              <% end %>
+                          <% end %>
+                      <% end %>
+                    </div>
+                </div>
+                <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
+
+                <!--メッセージ２（右側）-->
+                <div class="bms_message bms_right">
+                    <div class="bms_message_box">
+                        <% if @messages.present? %>
+                            <% @messages.each do |m| %>
+                                <% if current_user.id == m.user.id %>
+                                    <div class="bms_message_content">
+                                        <div class="bms_message_text"><%= m.talk_message %><%= m.created_at.strftime("%m-%d %H:%M")%></div>
+                                    </div>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="bms_clear"></div><!-- 回り込みを解除（スタイルはcssで充てる） -->
+            </div>
+
+            <!-- テキストボックス、送信ボタン④ -->
+            <div id="bms_send">
+                <%= form_for @message do |f| %>
+                    <div><%= f.text_field :talk_message, placeholder: "メッセージを入力して下さい", id: "bms_send_message" %>
+                        <%= f.hidden_field :room_id, :value => @room.id %>
+                        <%= f.submit "送信", id: "bms_send_btn" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

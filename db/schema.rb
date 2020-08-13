@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_085142) do
+ActiveRecord::Schema.define(version: 2020_08_11_062005) do
 
   create_table "articles", force: :cascade do |t|
     t.text "title"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2020_08_10_085142) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "hashbody", default: ""
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.index ["user_id"], name: "index_entries_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -57,6 +66,16 @@ ActiveRecord::Schema.define(version: 2020_08_10_085142) do
     t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.text "talk_message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
@@ -68,6 +87,12 @@ ActiveRecord::Schema.define(version: 2020_08_10_085142) do
   create_table "relationships", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

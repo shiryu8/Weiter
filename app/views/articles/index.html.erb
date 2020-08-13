@@ -15,7 +15,6 @@
 			<div class="home-article">
 				<div class="row">
 					<div class="col-md-11">
-						<% @articles = Article.order("created_at DESC") %>
 						<% @articles.each do |article| %>
 							<div class="home-img">
 								<%= link_to article_path(article) do %>

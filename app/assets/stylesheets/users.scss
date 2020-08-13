@@ -20,6 +20,58 @@ h1{
   margin: 50px 0;
 }
 
+.profile-title {
+  border-bottom: 6px solid #FFBEDA;
+  width: 150px;
+  margin: 0px auto 40px auto;
+}
+.profile-calender {
+  position: absolute;
+  top: 130px;
+  right: 70px;
+  font-size: 50px;
+}
+.col-md-6 {
+  height: 400px;
+}
+.form-group {
+  margin-left: 115px;
+}
+.profile-name {
+  text-align: center;
+  font-size: 30px;
+}
+.profile-article, .profile-follow, .profile-follower {
+  font-size: 40px;
+  float: left;
+  text-align: center;
+  padding-right:30px;
+}
+.profile-article-name, .follow-name, .follower-name {
+  font-size: 30px;
+  color: #337ab7;
+}
+.profile-goal {
+  padding-top: 120px;
+}
+.goal {
+  font-size: 20px;
+  float: left;
+}
+.profile-edit {
+  position: absolute;
+  right: 30px;
+  bottom: 15px;
+}
+.profile-chat {
+  position: absolute;
+  right: 150px;
+  bottom: 5px;
+}
+.profile-introduction-name {
+  padding-top: 40px;
+  font-size: 20px;
+}
 .wrap{
   width: 100%;
   max-width: 100%;
@@ -69,47 +121,8 @@ h1{
   font-size: 15px;
   height: 300px;
 }
-.form-group {
-  margin-left: 115px;
-}
-.profile-title {
-  border-bottom: 6px solid #FFBEDA;
-  width: 150px;
-  margin: 0px auto 40px auto;
-}
-.profile-calender {
-  position: absolute;
-  top: 130px;
-  right: 70px;
-  font-size: 50px;
-}
-.profile-name {
-  text-align: center;
-  font-size: 30px;
-}
-.profile-article, .profile-follow, .profile-follower {
-  font-size: 40px;
-  float: left;
-  text-align: center;
-  padding-right:30px;
-}
-.profile-article-name, .follow-name, .follower-name {
-  font-size: 30px;
-  color: #337ab7;
-}
-.profile-goal {
-  padding-top: 120px;
-}
-.goal {
-  font-size: 20px;
-  float: left;
-}
-.profile-introduction-name {
-  padding-top: 40px;
-  font-size: 20px;
-}
-.profile-edit {
-  width: 1200px;
+.my-article-img {
+  padding-top: 10px;
 }
 .profile-favo, .profile-comment {
   float:left;
@@ -117,9 +130,6 @@ h1{
 }
 .profile-article-title {
   padding-top: 30px;
-}
-.my-article-img {
-  padding-top: 10px;
 }
 
 

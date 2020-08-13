@@ -1,0 +1,5 @@
+<h1>メッセージ一覧</h1>
+  <% @anotherUserids.each do |u| %>
+    <%= User.find(u).name %>
+    <%= Message.find(@anotherEntry.where(user_id: u).last.room.message_ids.last).talk_message %>
+  <% end %>

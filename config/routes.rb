@@ -20,7 +20,6 @@ Rails.application.routes.draw do
 
 
 
-
   resources :users, only: [:show, :edit, :update] do
   	resource :relationships, only: [:create, :destroy]
     post 'relationships/followcreate', to: 'relationships#followcreate'
@@ -30,7 +29,10 @@ Rails.application.routes.draw do
     get 'event', to: 'users#calendershow'
   end
 
-
   resources :events, only: [:create, :update, :destroy]
+
+  resources :messages, only: [:create]
+
+  resources :rooms, only: [:create,:show, :index]
 
 end

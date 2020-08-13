@@ -14,7 +14,7 @@ class EventsController < ApplicationController
   def destroy
     event = Event.find(params[:id])
     event.destroy
-    redirect_to user_event_path(user)
+    redirect_to user_event_path(current_user)
   end
 
   		private
