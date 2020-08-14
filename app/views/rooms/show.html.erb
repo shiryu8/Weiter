@@ -57,7 +57,7 @@
                 <%= form_for @message do |f| %>
                     <div><%= f.text_field :talk_message, placeholder: "メッセージを入力して下さい", id: "bms_send_message" %>
                         <%= f.hidden_field :room_id, :value => @room.id %>
-                        <%= f.submit "送信", id: "bms_send_btn" %>
+                        <%= f.submit "Send", id: "bms_send_btn" %>
                     </div>
                 <% end %>
             </div>

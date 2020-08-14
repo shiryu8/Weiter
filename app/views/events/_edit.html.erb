@@ -3,33 +3,33 @@
         <div class="modal-dialog modal-nm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">スケジュール編集</h4>
+                    <h4 class="modal-title">Edit Schedule</h4>
                 </div>
                 <div class="modal-body">
                     <div  class="col">
                         <%= form_with(model: event, url: event_path(event), method: :put) do |f| %>
                             <p>
-                                <span>タイトル</span>
+                                <span>Title</span>
                                 <span id="inputTitle" value=""><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
                             </p>
-                            <span>場所</span>
+                            <span>Place</span>
                             <span><%= f.text_field :place, class: "form-control", placeholder: "場所を入力してください" %></span>
-                            <span>開始日時</span>
+                            <span>Start</span>
                             <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
-                            <span>終了日時</span>
+                            <span>End</span>
                             <span><%= f.datetime_field  :end, placeholder: "XXXX-XX-XX", class:"field" %></span>
                             <span><br>
-                                詳細
+                                Detail
                                 <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %>
                             </span>
                             <div class="modal-footer">
                                 <%= f.hidden_field :user_id, :value => current_user.id %>
-                                <%= f.submit "編集", class: "btn btn-primary" %>
+                                <%= f.submit "Edit", class: "btn btn-primary" %>
                                 <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
                             </div>
                         <% end %>
                         <div>
-                            <%= link_to "削除", event_path(event), method: :delete, class: "btn btn-danger" %>
+                            <%= link_to "Delete", event_path(event), method: :delete, class: "btn btn-danger" %>
                         </div>
                     </div>
                 </div>

@@ -3,30 +3,30 @@
     <div class="sign-up-explanation">
       <h3 class="weitertoha">Weiterとは</h3>
       <p class="weitertoha-explanation">
-        <strong>Weiter</strong>とは『世界中の人々がサッカーで繋がる』をテーマに、個人のサッカーの日常や挑戦してる事、サッカーに関連した知識や情報を投稿し、Instagram感覚で楽しめたり、Note感覚で学べるサイトです。このアプリを期に、サッカーを好きになる人、成長してくれる人、人気になる人が増えることを目指します。
+        <strong>Weiter</strong>とは『世界中の人々がサッカーで繋がる』をテーマに、個人のサッカーの日常や挑戦してる事、サッカーに関連した知識や情報を投稿し、楽しむこと、学ぶことを目的にしたサイトです。このアプリを期に、サッカーを好きになる人、成長してくれる人、人気になる人が増えることを目指します。
       </p>
     </div>
     <div class="article-sign-up">
       <div class="sign-up">
-        <h2 class="signup">Sign up</h2>
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-            <div class="sign-up-field">
-              <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"ユーザーネーム" %>
-            </div>
-            <div class="sign-up-field">
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
-            </div>
-            <div class="sign-up-field">
-              <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード" %>
-            </div>
-            <div class="sign-up-field">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"パスワード（確認）" %>
-            </div>
-            <div class="sign-up-actions">
-              <%= f.submit "　　　　　　新規登録　　　　　　　", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+        <h2 class="signup">Sign Up</h2>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+          <div class="sign-up-field">
+            <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder:"Username" %>
+          </div>
+          <div class="sign-up-field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Email" %>
+          </div>
+          <div class="sign-up-field">
+            <%= f.password_field :password, autocomplete: "new-password", placeholder:"password" %>
+          </div>
+          <div class="sign-up-field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder:"Confirmation Password" %>
+          </div>
+          <div class="sign-up-actions">
+            <%= f.submit "　　　　　Create New Account　　　　　　", class: "btn btn-primary" %>
+          </div>
+        <% end %>
       </div>
       <%= render "devise/shared/links" %>
     </div>

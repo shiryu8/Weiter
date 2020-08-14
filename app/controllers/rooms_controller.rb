@@ -11,22 +11,6 @@ class RoomsController < ApplicationController
     redirect_to "/rooms/#{@room.id}"
   end
 
-  def index
-    @user = current_user
-    @currentEntries = current_user.entries
-    myRoomIds = []
-
-    @currentEntries.each do | entry |
-      myRoomIds << entry.room.id
-    end
-    #@anotherEntriesにはuser_idが自分のidではない相手の情報が配列として入っている
-    @anotherEntry = Entry.where(room_id: myRoomIds).where('user_id != ?', @user.id)
-    #@anotherUseridsには@anotherEntryからuser_idだけを選ぶ(distinctメソッドとは重複レコードを1つにまとめる)
-    @anotherUserids = @anotherEntry.select('user_id').distinct
-    #@anotherUseridsを数字列に
-    @anotherUserids = @anotherUserids.map { |h| h[:user_id] }
-  end
-
   def show
   	@room = Room.find(params[:id])
     #現在ログインしているユーザーのidとそれにひもづいたルームのidがある場合

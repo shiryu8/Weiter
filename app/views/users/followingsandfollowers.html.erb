@@ -1,8 +1,7 @@
 <div class="container">
 	<h1><%= @user.name %></h1>
-
 		<div class="user-followers">
-			<h2 class="userfollowers">フォロワー(<%= @follower_users.count %>)</h2>
+			<h2 class="userfollowers-title">Followers(<%= @follower_users.count %>)</h2>
 			<% @follower_users.each do |follower_user| %>
 				<!-- 自分をのぞいた人たちのみボタンを表示する(自分をフォローすることを避けたい) -->
 			    <% if current_user != follower_user %>
@@ -15,7 +14,7 @@
 					        <%= link_to follower_user.name, user_path(follower_user) %>
 				        <!-- ログインしている人が、他の人のフォロー、フォロワー関係を操作できないようにする -->
 					        <% if current_user == @user %>
-				            	<p><%=link_to "フォロー中", user_relationships_followdestroy_path(follower_user), method: :delete, class: 'btn btn-primary pull-right' %></p>
+				            	<p><%=link_to "Following", user_relationships_followdestroy_path(follower_user), method: :delete, class: 'btn btn-primary pull-right' %></p>
 				            <% end %>
 			       		</div>
 			       	<!-- ログインしているユーザーがフォローしていなかったら -->
@@ -27,7 +26,7 @@
 					    	<%= link_to follower_user.name, user_path(follower_user) %>
 					        <!-- ログインしている人が、他の人のフォロー、フォロワー関係を操作できないようにする -->
 					        <% if current_user == @user %>
-				            	<p><%=link_to "フォローする", user_relationships_followcreate_path(follower_user), method: :post, class: 'btn btn-primary pull-right' %></p>
+				            	<p><%=link_to "Follow", user_relationships_followcreate_path(follower_user), method: :post, class: 'btn btn-primary pull-right' %></p>
 				            <% end %>
 			        	</div>
 			        <% end %>
@@ -44,20 +43,20 @@
 		</div>
 
 		<div class="user-followings">
-			<h2 class="userfollowings">フォロー(<%= @following_users.count %>)</h2>
+			<h2 class="userfollowings-title">Following(<%= @following_users.count %>)</h2>
 			<% @following_users.each do |following_user| %>
 				<!-- 自分をのぞいた人たちのみボタンを表示する（自分をフォローする自体は避けたい） -->
 			    <% if current_user != following_user %>
-			        	<div class="userfollowings-name">
-			            	<%= link_to user_path(following_user) do %>
-						       <%= attachment_image_tag following_user, :profile_image, size: "120x120", fallback: "no_image.jpg", class: "img-circle" %>
-					        <% end %>
-					        <%= link_to following_user.name, user_path(following_user) %>
-				        	<!-- ログインしている人が、他の人のフォロー、フォロワー関係を操作できないようにする -->
-					        <% if current_user == @user %>
-				            	<p><%=link_to "フォロー中", user_relationships_followdestroy_path(following_user), method: :delete, class: 'btn btn-primary pull-right' %></p>
-				            <% end %>
-			        	</div>
+			        <div class="userfollowings-name">
+			            <%= link_to user_path(following_user) do %>
+						    <%= attachment_image_tag following_user, :profile_image, size: "120x120", fallback: "no_image.jpg", class: "img-circle" %>
+					    <% end %>
+						<%= link_to following_user.name, user_path(following_user) %>
+				        <!-- ログインしている人が、他の人のフォロー、フォロワー関係を操作できないようにする -->
+					    <% if current_user == @user %>
+				            <p><%=link_to "Following", user_relationships_followdestroy_path(following_user), method: :delete, class: 'btn btn-primary pull-right' %></p>
+				        <% end %>
+			        </div>
 			    <% else %>
 			    	<div class="userfollowings-name2">
 					    <%= link_to user_path(following_user) do %>

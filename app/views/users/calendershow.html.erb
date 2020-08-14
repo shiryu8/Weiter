@@ -1,6 +1,6 @@
 
-<div class="container">
-    <h1 class="text-center">カレンダー</h1>
+<div class="container calendershow">
+    <h1 class="text-center">Calender</h1>
     <!-- カレンダーの表示 -->
     <div id="calendar"></div>
     <!-- もしユーザーがログインしていたら -->
@@ -17,16 +17,16 @@
                             <%= form_with model: @event, url: events_path do |f| %>
                                 <div  class="col">
                                         <p>
-                                            <span>タイトル</span>
+                                            <span>Title</span>
                                             <span><%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力してください" %></span>
                                         </p>
-                                        <span>場所</span>
+                                        <span>Place</span>
                                         <span><%= f.text_field :place, class: "form-control", placeholder: "場所を入力してください" %></span>
-                                        <span>開始日時</span>
+                                        <span>Start</span>
                                         <span><%= f.datetime_field  :start, placeholder: "XXXX-XX-XX", class:"field" %> ~ </span><br>
-                                        <span>終了日時</span>
+                                        <span>End</span>
                                         <span><%= f.datetime_field :end, placeholder: "XXXX-XX-XX", class:"field" %></span><br>
-                                        <span>詳細
+                                        <span>Detail
                                         <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %></span>
                                 </div>
                                 <div class="modal-footer">

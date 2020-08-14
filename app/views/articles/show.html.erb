@@ -1,100 +1,97 @@
 <div class="container">
-		<h1 class="articleshow-theme">Article</h1>
-		<div id="abc">
-			<% if @article.user == current_user %>
-				<p class="btn-gnavi">
-			        <span></span>
-			        <span></span>
-			        <span></span>
-			    </p>
-		        <nav id="global-navi">
-		        	<ul class="menu">
-		        		<li>
-		        			<a href=""><%= link_to "編集", edit_article_path(@article), method: :get %></a>
-		        		</li>
-		        		<li>
-		        			<a href=""><%= link_to "削除", article_path(@article), "data-confirm" => "本当に削除しますか？", method: :delete %></a>
-		        		</li>
-	        		</ul>
-	    		</nav>
-    		<% end %>
+	<h1 class="articleshow-theme">Article</h1>
+	<div id="abc">
+		<% if @article.user == current_user %>
+			<p class="btn-gnavi">
+			    <span></span>
+			    <span></span>
+			    <span></span>
+			</p>
+		    <nav id="global-navi">
+		        <ul class="menu">
+		        	<li>
+		        		<a href=""><%= link_to "Edit", edit_article_path(@article), method: :get %></a>
+		        	</li>
+		        	<li>
+		        		<a href=""><%= link_to "Delete", article_path(@article), "data-confirm" => "本当に削除しますか？", method: :delete %></a>
+		        	</li>
+	        	</ul>
+	    	</nav>
+    	<% end %>
+	</div>
+	<div class="article-leftside">
+		<div>
+			<p><%= attachment_image_tag @user, :profile_image, size: "220x220", format: 'jpeg', fallback: "no_image.jpg", class: "img-circle" %></p>
 		</div>
-		<div class="article-leftside">
-			<div class="">
-				<p><%= attachment_image_tag @user, :profile_image, size: "220x220", format: 'jpeg', fallback: "no_image.jpg", class: "img-circle" %></p>
+		<div>
+			<h4><%= link_to @user.name, user_path(@user) %></h4>
+		</div>
+		<div class="leftside-introduction">
+			<h4 class="left-side-introduction-name">Introduction</h4><%= @user.introduction %>
+		</div>
+	</div>
+	<div class="articleshow-main">
+		<div class="row">
+			<div class="articleshow-img">
+				<%= l @article.created_at, format: :long %>
+				<p><%= attachment_image_tag @article, :image, class: "img-rounded", size: "600x400" %></p>
+			</div>
+			<!-- 部分的に更新したい場所（いいね機能） -->
+			<div id="favorites_buttons_<%= @article.id %>", class="articleshow-favo">
+				<%= render partial: 'favorites/favorite', locals: { article: @article} %>
+			</div>
+			<div class="articleshow-comment-1">
+				<i class="fa fa-comment"></i>
+				<%= @article.post_comments.count %>
+			</div>
+			<div class="articleshow-title">
+				<h4 class="articleshow-title"><%= @article.title %></h4>
+			</div>
+			<div class="articleshow-content">
+				<p class="articleshow-content"><%= @article.content %></p>
+                <!-- helperで作成したメソッドを呼び出し(articles_helper.rb) -->
+				<%= render_with_hashtags(@article.hashbody) %>
 			</div>
 			<div>
-				<h4><%= link_to @user.name, user_path(@user) %></h4>
-			</div>
-			<div class="leftside-introduction">
-				<h4 class="left-side-introduction-name">Introduction</h4><%= @user.introduction %>
-			</div>
-		</div>
-		<div class="articleshow-main">
-			<div class="row">
-					<div class="articleshow-img">
-						<%= l @article.created_at, format: :long %>
-						<p><%= attachment_image_tag @article, :image, class: "img-rounded", size: "600x400" %></p>
-					</div>
-					<!-- 部分的に更新したい場所（いいね機能） -->
-					<div id="favorites_buttons_<%= @article.id %>", class="articleshow-favo">
-						<%= render partial: 'favorites/favorite', locals: { article: @article} %>
-					</div>
-					<div class="articleshow-comment-1">
-						<i class="fa fa-comment"></i>
-						<%= @article.post_comments.count %>
-					</div>
-					<div class="articleshow-title">
-						<h4 class="articleshow-title"><%= @article.title %></h4>
-					</div>
-					<div class="articleshow-content">
-						<p class="articleshow-content"><%= @article.content %></p>
-                        <!-- helperで作成したメソッドを呼び出し(articles_helper.rb) -->
-						<%= render_with_hashtags(@article.hashbody) %>
-					</div>
-					<div class="">
-				    	<div class="float-wrapper">
-				        	<h4 class="comment-count">
-				            	コメント一覧
-				        	</h4>
-				        </div>
-				        <ol>
-				           	<% @article.post_comments.each do |post_comment| %>
-					            <div class="comment-body">
-					                <div class="comment-avatar">
-					                    <div class="avatar">
-					                        <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class: "img-circle", size: "50x50" %>
-					                    </div>
-					                </div>
-					                <div class="comment-text">
-					                    <div class="comment-author clearfix">
-					                        <%= link_to post_comment.user.name, user_path(post_comment.user) %>
-						                    <span class="comment-meta">
-						                    	<span class="comment-date"><%= l post_comment.created_at %></span>
-						                    </span>
-					                    </div>
-					                	<div class="comment-entry">
-					                      	<%= post_comment.comment %>
-					                    </div>
-					                    <% if post_comment.user == current_user %>
-								            <div>
-								              <%= link_to "削除", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
-								            </div>
-								        <% end %>
-					                </div>
-					            </div>
-				            <% end %>
-				        </ol>
-				    </div>
-				    <div class="articleshow-comment">
-					<% if @article.user != current_user %>
-						<%= form_for [@article, @post_comment] do |f| %>
-			            	<%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
-			    			<%= f.submit "送信", class: "btn btn-primary pull-right" %>
-						<% end %>
-					<% end %>
-					</div>
+				<div class="float-wrapper">
+				    <h4 class="comment-count">Comments</h4>
 				</div>
+				<ol>
+				    <% @article.post_comments.each do |post_comment| %>
+					    <div class="comment-body">
+					        <div class="comment-avatar">
+					            <div>
+					                <%= attachment_image_tag post_comment.user, :profile_image, fallback: "no_image.jpg", class: "img-circle", size: "50x50" %>
+					            </div>
+					        </div>
+					        <div class="comment-text">
+					            <div class="comment-author clearfix">
+					                <%= link_to post_comment.user.name, user_path(post_comment.user) %>
+						            <span class="comment-meta">
+						                <span class="comment-date"><%= l post_comment.created_at %></span>
+						            </span>
+					            </div>
+					            <div class="comment-entry">
+					                <%= post_comment.comment %>
+					            </div>
+					            <% if post_comment.user == current_user %>
+								    <div>
+								        <%= link_to "Delete", article_post_comment_path(post_comment.article, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+								    </div>
+								<% end %>
+					        </div>
+					    </div>
+				    <% end %>
+				</ol>
+			</div>
+			<div>
+				<% if @article.user != current_user %>
+					<%= form_for [@article, @post_comment] do |f| %>
+			            <%= f.text_area :comment, rows:'2', class: "form-control",placeholder: "コメントをここに" %>
+			    		<%= f.submit "Post", class: "btn btn-primary pull-right" %>
+					<% end %>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -7,37 +7,37 @@
 			    	<h2><%= @article_new.errors.count %>件のエラーが発生しました。</h2>
 			    	<ul>
 			    		<% @article_new.errors.full_messages.each do |message| %>
-			    		<li><%= message %></li>
+			    			<li><%= message %></li>
 			    		<% end %>
 			    	</ul>
 			    </div>
 		    <% end %>
 
-	    	<div class="">
-		    	<h4 class="newarticle">イメージ</h4>
+	    	<div>
+		    	<h4 class="newarticle">Image</h4>
 		    	<%= f.attachment_field :image %>
 	    	</div>
 
-	    	<div class="">
-		    	<h4 class="newarticle">タイトル</h4>
+	    	<div>
+		    	<h4 class="newarticle">Title</h4>
 		    	<%= f.text_field :title, placeholder:"タイトルを書く", class: 'form-control' %>
 		    </div>
 
 	    	<div class="newarticle-caption">
-		    	<h4 class="newarticle">キャプション</h4>
+		    	<h4 class="newarticle">Caption</h4>
 		    	<%= f.text_area :content, placeholder:"キャプションを書く", :size => "80x20", class: 'form-control' %>
 		    </div>
 		    <div class="newarticle-caption">
-		    	<h4 class="newarticle-hashtag">ハッシュタグ</h4>
-		    	<%= f.text_area :hashbody, placeholder:"キャプションを書く", size:"70x2", class: 'form-control' %>
+		    	<h4 class="newarticle-hashtag">Hashtag</h4>
+		    	<%= f.text_area :hashbody, placeholder:"ハッシュタグを書く", size:"70x2", class: 'form-control' %>
 		    </div>
 		    <div class="newarticle-button">
-		    	<%= f.submit "　　　　　　　　　　　　　　New Post　　　　　　　　　　　　　　　", class: 'btn btn-primary' %>
+		    	<%= f.submit "　　　　　　　　　　　　　　Post　　　　　　　　　　　　　　　", class: 'btn btn-primary' %>
 		    </div>
 
 	    <% end %>
 	    <div class="newarticle-cancel">
-    		<%= link_to 'キャンセル', articles_path, class: 'btn btn-danger pull-right' %>
+    		<%= link_to 'Cancel', articles_path, class: 'btn btn-danger pull-right' %>
 		</div>
     </div>
 </div>

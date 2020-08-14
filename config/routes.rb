@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'tops#top'
+  get 'home/about', to: 'tops#about'
 
   resources :articles do
   	resource :favorites, only: [:create, :destroy]
@@ -33,6 +34,6 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
-  resources :rooms, only: [:create,:show, :index]
+  resources :rooms, only: [:create,:show]
 
 end

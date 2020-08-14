@@ -3,12 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
+//top//
+
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
-
 .main-top {
   width: 700px;
   float: left;
@@ -26,30 +28,100 @@
   font-size: 20px;
   margin: 5px 10px 10px 10px;
 }
+.top-profile {
+  text-align: right;
+}
 .top-sidebar {
   width: 300px;
   float: left;
-}
-.top-profile {
-	text-align: right;
+  border-left: 3px solid #ccc;
+  padding-left: 50px;
+  margin-left: 20px;
 }
 .top-side-theme {
   border-bottom: 6px solid #B1F9D0;
   text-align: center;
   line-height: 0.6;
 }
-.top-sidebar {
-	border-left: 3px solid #ccc;
-	padding-left: 50px;
-	margin-left: 20px;
+.side-heart-comment {
+  margin: 1px 2px 2px 4px;
+  font-size: 15px;
+}
+.top-side-title {
+  text-align: left;
 }
 .top-side-profile {
 	text-align: right;
 }
-.top-side-title {
-	text-align: left;
+
+
+
+//about//
+.about-body {
+  font-family: ヒラギノ丸ゴ ProN;
 }
-.side-heart-comment {
-  margin: 1px 2px 2px 4px;
+.about-weiter {
+  margin: 0 auto;
+  width: 1200px;
+  height: 270px;
+}
+.weiter-theme {
+  background-color: #BAD3FF;
+  padding: 30px 0;
+  margin-top: 10px;
+}
+.icon-introduction {
+  font-size: 17px;
+  width: 230px;
+  float: left;
+  margin-left: 20px;
+  line-height: 1.5;
+  border: 2px solid #BAD3FF;
+  padding: 10px;
+  border-radius: 10px;
+}
+    ul {
+      list-style: none;
+      }
+
+.weiter-main {
+  font-size: 23px;
+  width: 600px;
+  float: left;
+  margin-left: 40px;
+  text-align: center;
+  line-height: 1.8;
+}
+.weiter-right {
   font-size: 15px;
+  width: 250px;
+  float: left;
+  margin-left: 40px;
+  border: 2px solid #BAD3FF;
+  padding: 10px;
+  border-radius: 10px;
+  line-height: 1.7;
+}
+.about-box1 {
+  margin: 40px 14px 40px 66px;
+  text-align: center;
+  background-color: #dfdfdf;
+  padding: 20px;
+  border-radius: 15px;
+}
+.about-box2 {
+  margin: 40px 66px 40px 14px;
+  text-align: center;
+  background-color: #dfdfdf;
+  padding: 20px;
+  border-radius: 15px;
+}
+.about-text {
+  border-bottom: 5px solid #BAD3FF;
+  width: 400px;
+  margin: 20px auto;
+}
+.about-introduction {
+  line-height: 1.8;
+  margin-top: 13px;
 }
