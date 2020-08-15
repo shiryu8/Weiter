@@ -12,6 +12,7 @@ class Article < ApplicationRecord
   has_many :hashtags, through: :hashtag_articles
 
 	attachment :image
+  validates :image, presence: true
 
 	#投稿がファボしてあるかどうかを判定する
 	  def favorited_by?(user)

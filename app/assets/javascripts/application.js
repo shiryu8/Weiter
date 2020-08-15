@@ -51,3 +51,12 @@ $(document).on('turbolinks:load', function(){
         }, 200);
     });
 });
+
+$(document).on('turbolinks:load', (function() {
+  $('#back a').on('click',function(){
+    $('body, html').animate({
+      scrollTop:0
+    }, 800);
+      event.preventDefault();
+  });
+});
