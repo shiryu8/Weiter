@@ -16,7 +16,7 @@
                             <div class="hashtag-comment">
                                 <i class="fa fa-comment"></i><%= article.post_comments.count %>
                             </div>
-                            <div class="">
+                            <div>
                                 <h4 class="hashtag-title">
                                     <%= link_to article.title, article_path(article) %>
                                 </h4>
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <div class="">
+    <div>
         <h3 class="hashtag-index-name">Hashtag</h3>
         <div>
             <% @hashtags.sort.reverse.each do |count| %>

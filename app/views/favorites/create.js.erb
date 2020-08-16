@@ -1,2 +1,1 @@
-// #favorites_buttons_<%= @article.id %>この部分のHTMLだけrenderで部分的に更新する
 $('#favorites_buttons_<%= @article.id %>').html("<%= j(render partial: 'favorites/favorite', locals: {article: @article}) %>");

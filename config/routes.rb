@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -7,25 +6,23 @@ Rails.application.routes.draw do
   get 'home/about', to: 'tops#about'
 
   resources :articles do
-  	resource :favorites, only: [:create, :destroy]
-      post 'favorites/favoritescreate', to: 'favorites#favoritescreate'
-      delete 'favorites/favoritesdestroy', to: 'favorites#favoritesdestroy'
-  	resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    post 'favorites/favoritescreate', to: 'favorites#favoritescreate'
+    delete 'favorites/favoritesdestroy', to: 'favorites#favoritesdestroy'
+    resources :post_comments, only: [:create, :destroy]
   end
 
- #ハッシュタグした投稿の一覧
+  # ハッシュタグした投稿の一覧
   get '/article/hashtag/:name', to: 'articles#hashtag'
 
- #フォローしたユーザーの投稿一覧
+  # フォローしたユーザーの投稿一覧
   get 'following_articles', to: 'articles#following_articles'
 
-
-
   resources :users, only: [:show, :edit, :update] do
-  	resource :relationships, only: [:create, :destroy]
+    resource :relationships, only: [:create, :destroy]
     post 'relationships/followcreate', to: 'relationships#followcreate'
     delete 'relationships/followdestroy', to: 'relationships#followdestroy'
-    #フォロワー一覧＋フォロー一覧
+    # フォロワー一覧＋フォロー一覧
     get :followingsandfollowers, on: :member
     get 'event', to: 'users#calendershow'
   end
@@ -34,6 +31,5 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:create]
 
-  resources :rooms, only: [:create,:show]
-
+  resources :rooms, only: [:create, :show]
 end

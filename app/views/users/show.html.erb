@@ -46,9 +46,9 @@
 				<!-- 自分をのぞいた人たちのみボタンを表示する -->
 				<% if current_user != @user %>
 					<% if @user.followed_by?(current_user) %>
-						<h5><%=link_to "Following", user_relationships_path(@user), method: :delete, class: 'btn btn-primary pull-right' %></h5>
+						<p><%=link_to "Following", user_relationships_path(@user), method: :delete, class: 'btn btn-primary pull-right' %></p>
 					<% else %>
-						<h5><%=link_to "Follow", user_relationships_path(@user), method: :create, class: 'btn btn-primary pull-right' %></h5>
+						<p><%=link_to "Follow", user_relationships_path(@user), method: :create, class: 'btn btn-primary pull-right' %></p>
 					<% end %>
 				<% else %>
 					<h5><%= link_to "Edit Profile", edit_user_path(@user), method: :get, class: 'btn btn-primary pull-right' %></h5>
@@ -57,8 +57,8 @@
 			<div class="profile-chat">
 				<% if @user.id != current_user.id %>
 					<!-- チャットルームが作成している時 -->
-		    		<% if @isRoom == true %>
-		    			<p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary">Message</a></p>
+		    		<% if @is_room == true %>
+		    			<p class="user-show-room"><a href="/rooms/<%= @room_id %>" class="btn btn-primary">Message</a></p>
 		    		<!-- 作成されていない時 -->
 		  			<% else %>
 		  				<!-- Roomsテーブルにform_forインスタンス変数 -->

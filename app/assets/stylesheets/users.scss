@@ -60,9 +60,15 @@ h1{
 .profile-edit {
   position: absolute;
   right: 30px;
-  bottom: 15px;
+  bottom: 5px;
 }
-.profile-chat {
+.user-show-room {
+  position: absolute;
+  right: 150px;
+  bottom: 5px;
+  margin-bottom: 0;
+}
+.user-show-chat {
   position: absolute;
   right: 150px;
   bottom: 5px;
@@ -202,6 +208,10 @@ h1{
   margin: 0 auto;
   text-align: center;
 }
+.userfollowings-name {
+  font-size: 20px;
+  margin-top: 50px;
+}
 .userfollowings-name2 {
   font-size: 20px;
   margin-top: 50px;
@@ -222,8 +232,8 @@ h1{
   margin: 20px auto 30px auto;
 }
 td.fc-sat {
-    background-color: #eaf4ff;
+  background-color: #eaf4ff;
 }
 td.fc-sun {
-    background-color: #ffeaea;
+  background-color: #ffeaea;
 }

@@ -21,6 +21,7 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function(){
+
 	$('#tab-contents .tab[id != "tab1"]').hide();
 
 	$('#tab-menu a').on('click', function() {
@@ -34,15 +35,11 @@ $(document).on('turbolinks:load', function(){
 
 $(document).on('turbolinks:load', function(){
     $(".btn-gnavi").on("click", function(){
-        // ハンバーガーメニューの位置を設定
         var rightVal = 0;
         if($(this).hasClass("open")) {
-            // 位置を移動させメニューを開いた状態にする
             rightVal = -300;
-            // メニューを開いたら次回クリック時は閉じた状態になるよう設定
             $(this).removeClass("open");
         } else {
-            // メニューを開いたら次回クリック時は閉じた状態になるよう設定
             $(this).addClass("open");
         }
 
@@ -52,7 +49,8 @@ $(document).on('turbolinks:load', function(){
     });
 });
 
-$(document).on('turbolinks:load', (function() {
+$(document).on('turbolinks:load', function() {
+
   $('#back a').on('click',function(){
     $('body, html').animate({
       scrollTop:0

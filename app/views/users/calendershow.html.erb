@@ -3,15 +3,13 @@
     <h1 class="text-center">Calender</h1>
     <!-- カレンダーの表示 -->
     <div id="calendar"></div>
-    <!-- もしユーザーがログインしていたら -->
     <% if user_signed_in? %>
-        <!-- ページのparams.idがログインユーザー.idと同じなら -->
         <% if @user.id == current_user.id %>
             <div id="inputScheduleForm" class="modal fade" tabindex="-1">
                 <div class="modal-dialog modal-nm">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">スケジュール登録</h4>
+                            <h4 class="modal-title">New Event</h4>
                         </div>
                         <div class="modal-body">
                             <%= form_with model: @event, url: events_path do |f| %>
@@ -30,9 +28,9 @@
                                         <%= f.text_field :body, class: "form-control", placeholder: "タイトルの詳細を記入してください" %></span>
                                 </div>
                                 <div class="modal-footer">
-                                    <%= f.submit "登録する", class: "btn btn-primary" %>
+                                    <%= f.submit "Save", class: "btn btn-primary" %>
                                     <%= f.hidden_field :user_id, :value => current_user.id %>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 </div>
                             <% end %>
                         </div>
@@ -73,20 +71,19 @@
                       next: ">"
                 },
 
-                timezone: 'JST', //日本時間に
-                events: '/users/<%= @user.id %>/event.json',  //jsonファイルへ
-                navLinks: true,  //日付がリンクになりクリックするとその日のイベント一覧を表示
-                selectable: true,  // 選択可
-                selectHelper: true,  // 選択時にプレースホルダーを描画
-                timeFormat: "HH:mm~",  //イベントの時間表示を２４時間に
-                eventColor: '#63ceef',  //イベントの色を変える
-                eventTextColor: '#000000',  //イベントの文字色を変える
-                // 日付クリック
+                timezone: 'JST',
+                events: '/users/<%= @user.id %>/event.json',
+                navLinks: true,
+                selectable: true,
+                selectHelper: true,
+                timeFormat: "HH:mm~",
+                eventColor: '#63ceef',
+                eventTextColor: '#000000',
+
                 dayClick : function ( date , jsEvent , view ) {
                     $('#inputScheduleForm').modal('show');
                     },
 
-                // eventクリックで編集、削除
                 eventClick : function(event, jsEvent , view) {
                     jsEvent.preventDefault();
                     $(`#inputScheduleEditForm${event.id}`).modal('show');

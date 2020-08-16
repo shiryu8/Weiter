@@ -107,7 +107,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_062005) do
     t.datetime "last_sign_in_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "name", null: false
     t.text "introduction"
     t.string "goal"
     t.string "profile_image_id"
