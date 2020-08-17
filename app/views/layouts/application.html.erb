@@ -54,11 +54,19 @@
               </nav>
           </div>
       </header>
-    <%= yield %>
-    <footer>
-      <p class="footer-text">©2020 Weiter From Akeru Iwamoto</p>
-      <p class="footer-body"><%= link_to 'How to Weiter', home_about_path %></p>
-
-    </footer>
+      <div class="body">
+        <div class="container">
+          <% if flash[:notice] %>
+            <div class="flash">
+             <%= flash[:notice] %>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+      <footer>
+        <p class="footer-text">©2020 Weiter From Akeru Iwamoto</p>
+        <p class="footer-body"><%= link_to 'How to Weiter', home_about_path %></p>
+      </footer>
   </body>
 </html>
