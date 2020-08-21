@@ -30,13 +30,16 @@
   border-bottom: 2px solid #DDDDDD;
   margin-bottom: 0;
 }
-.nav {
-  margin-top: 30px;
-  margin-right: 10px;
+.navbar-right {
+  position: absolute;
+  top: 30px;
+  right: 30px;
   font-size: 30px;
 }
 .weiter {
-  margin: 0 0 50px 50px;
+  position: absolute;
+  left: 30px;
+  top: 10px;
   font-family: 'Caveat', cursive;
   font-size: 40px;
   font-weight: 500;

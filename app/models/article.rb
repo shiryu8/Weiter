@@ -10,8 +10,10 @@ class Article < ApplicationRecord
   has_many :hashtag_articles, dependent: :destroy
   has_many :hashtags, through: :hashtag_articles
 
-  attachment :image
+  attachment :image, type: :image
   validates :image, presence: true
+  validates :title, presence: true
+  validates :content, presence: true, length: { maximum: 300 }
 
   # 投稿がファボしてあるかどうかを判定する
   def favorited_by?(user)
