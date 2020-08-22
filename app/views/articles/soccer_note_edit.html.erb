@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="article-edit">
+        <h1 class="article-edit-theme">Edit  Soccer Note</h1>
+        <div class="edit-article-change-button">
+            <%= link_to 'Edit Article', edit_article_path(@article), class: 'btn btn-success pull-right' %>
+        </div>
+        <%= form_for(@article) do |f| %>
+            <div class="edit-article">
+                <h3>Image</h3>
+                <%= attachment_image_tag @article, :image, size: "600x360", class: "img-rounded" %>
+                <%= f.file_field :image %>
+            </div>
+            <div class="edit-article">
+                <h3>Title</h3>
+                <%= f.text_field :title, class: 'form-control' %>
+            </div>
+            <div>
+                <h3>Opponent Team</h3>
+                VS<%= f.text_field :opponent_team, class: 'form-control' %>
+            </div>
+            <div class="edit-article">
+                <h3>Content</h3>
+                <%= f.text_area :content, size: "80x10",  class: 'form-control' %>
+            </div>
+            <div class="edit-article">
+                <h3>Good Point</h3>
+                <%= f.text_area :good_point, class: 'form-control' %>
+            </div>
+            <div class="edit-article">
+                <h3>Improvement Point</h3>
+                <%= f.text_area :improvement_point, class: 'form-control' %>
+            </div>
+            <div class="edit-article">
+                <h3>Next Challenge</h3>
+                <%= f.text_area :next_challenge, class: 'form-control' %>
+            </div>
+            <div class="editarticle-button">
+                <%= f.submit "　　　　　Done　　　　　", class:'btn btn-primary' %>
+            </div>
+        <% end %>
+    </div>
+</div>

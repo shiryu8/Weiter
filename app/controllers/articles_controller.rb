@@ -6,6 +6,10 @@ class ArticlesController < ApplicationController
     @article_new = Article.new
   end
 
+  def soccer_note
+    @article_new = Article.new
+  end
+
   def create
     @article_new = Article.new(article_params)
     @article_new.user_id = current_user.id
@@ -34,6 +38,12 @@ class ArticlesController < ApplicationController
     @post_comment = PostComment.new
   end
 
+  def soccer_note_show
+    @article = Article.find(params[:id])
+    @user = @article.user
+    @post_comment = PostComment.new
+  end
+
   def hashtag
     @user = current_user
     @hashtag = Hashtag.find_by(hashname: params[:name])
@@ -42,6 +52,10 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
+  end
+
+  def soccer_note_edit
     @article = Article.find(params[:id])
   end
 
@@ -63,7 +77,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :image, :user_id, :hashbody, hashtag_ids: [])
+    params.require(:article).permit(:title, :content, :image, :user_id, :hashbody, :opponent_team, :good_point, :improvement_point, :next_challenge, hashtag_ids: [] )
   end
 
   def current_user_article?

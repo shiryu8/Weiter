@@ -1,8 +1,8 @@
 <div class="container">
 	<div class="newarticle-main">
-	    <h1 class="newpost-title">New Post</h1>
+	    <h1 class="newpost-title">New Soccer Note</h1>
 	    <div class="newarticle-change-button">
-    		<%= link_to 'Soocer Note', soccer_note_path, class: 'btn btn-success pull-right' %>
+    		<%= link_to 'New Post', new_article_path, class: 'btn btn-success pull-right' %>
 		</div>
 	    <%= form_for(@article_new) do |f| %>
 		    <% if @article_new.errors.any? %>
@@ -24,14 +24,25 @@
 		    	<h4 class="newarticle">Title</h4>
 		    	<%= f.text_field :title, placeholder:"タイトルを書く", class: 'form-control' %>
 		    </div>
-
+		    <div>
+		    	<h4 class="newarticle">Opponent Team</h4>
+		    	VS<%= f.text_field :opponent_team, placeholder:"対戦相手を書く", class: 'form-control' %>
+		    </div>
 	    	<div>
-		    	<h4 class="newarticle">Caption</h4>
-		    	<%= f.text_area :content, placeholder:"キャプションを書く", :size => "80x20", class: 'form-control' %>
+		    	<h4 class="newarticle">Content</h4>
+		    	<%= f.text_area :content, placeholder:"試合内容、練習メニュー、感想などを書く",  class: 'form-control',　size: "60x20" %>
 		    </div>
 		    <div>
-		    	<h4 class="newarticle">Hashtag</h4>
-		    	<%= f.text_area :hashbody, placeholder:"ハッシュタグを書く", size:"70x2", class: 'form-control' %>
+		    	<h4 class="newarticle">Good Point</h4>
+		    	<%= f.text_area :good_point, placeholder:"良かった点を書く", class: 'form-control' %>
+		    </div>
+		    <div>
+		    	<h4 class="newarticle">Improvement Point</h4>
+		    	<%= f.text_area :improvement_point, placeholder:"改善点を書く", class: 'form-control' %>
+		    </div>
+		    <div>
+		    	<h4 class="newarticle">Next Challenge</h4>
+		    	<%= f.text_area :next_challenge, placeholder:"次回挑戦することを書く", class: 'form-control' %>
 		    </div>
 		    <div class="newarticle-button">
 		    	<%= f.submit "　　　　　　　　　　　　　　Post　　　　　　　　　　　　　　　", class: 'btn btn-primary' %>

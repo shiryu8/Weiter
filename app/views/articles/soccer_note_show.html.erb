@@ -1,7 +1,7 @@
 <div class="container">
-	<h1 class="articleshow-theme">Article</h1>
+	<h1 class="soccer-note-theme">Soccer Note</h1>
 	<div class="scccernote-show-change-button">
-    	<%= link_to 'Soccer Note',  soccer_note_show_path(@article), class: 'btn btn-success' %>
+    	<%= link_to 'Article', article_path(@article), class: 'btn btn-success' %>
 	</div>
 	<div id="abc">
 		<% if @article.user == current_user %>
@@ -47,13 +47,31 @@
 				<i class="fa fa-comment"></i>
 				<%= @article.post_comments.count %>
 			</div>
-			<div class="articleshow-title">
-				<h4 class="articleshow-title"><%= @article.title %></h4>
+			<div class="">
+				<h4 class="soccer-show-title">＜Title＞</h4>
+				<p class="soccer-show-body"><%= @article.title %></p>
 			</div>
-			<div class="articleshow-content">
-				<p class="articleshow-content"><%= @article.content %></p>
+			<div class="">
+				<h4 class="soccer-show-title">＜Opponent Team＞</h4>
+				<p class="soccer-show-body"><%= @article.opponent_team %></h4>
+			</div>
+			<div class="">
+				<h4 class="soccer-show-title">＜Content＞</h4>
+				<p class="soccer-show-body"><%= @article.content %></p>
                 <!-- helperで作成したメソッドを呼び出し(articles_helper.rb) -->
 				<%= render_with_hashtags(@article.hashbody) %>
+			</div>
+			<div class="">
+				<h4 class="soccer-show-title">＜Good Point＞</h4>
+				<p class="soccer-show-body"><%= @article.good_point %></p>
+			</div>
+			<div class="">
+				<h4  class="soccer-show-title">＜Improvement Point＞</h4>
+				<p class="soccer-show-body"><%= @article.improvement_point %></p>
+			</div>
+			<div class="">
+				<h4  class="soccer-show-title">＜Next Challenge＞</h4>
+				<p class="soccer-show-body"><%= @article.next_challenge %></p>
 			</div>
 			<div>
 				<div class="float-wrapper">
@@ -98,5 +116,3 @@
 		</div>
 	</div>
 </div>
-
-

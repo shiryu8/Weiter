@@ -1,6 +1,9 @@
 <div class="container">
     <div class="article-edit">
         <h1 class="article-edit-theme">Edit Article</h1>
+        <div class="edit-article-change-button">
+            <%= link_to 'Edit Soccer Note',  soccer_note_edit_path(@article), class: 'btn btn-success pull-right' %>
+        </div>
         <%= form_for(@article) do |f| %>
             <div class="edit-article">
                 <h3>Image</h3>
