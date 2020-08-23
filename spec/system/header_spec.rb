@@ -5,16 +5,20 @@ describe 'ヘッダーのテスト' do
     before do
       visit root_path
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルが表示される' do
         is_expected.to have_content 'Weiter'
       end
     end
+
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
+
       it 'トップ画面に遷移する' do
-       expect(page).to have_link "", href: root_path
+        expect(page).to have_link "", href: root_path
       end
       it 'About画面に遷移する' do
         expect(page).to have_link "", href: home_about_path
@@ -30,20 +34,25 @@ describe 'ヘッダーのテスト' do
 
   describe 'ログインしている場合' do
     let(:user) { create(:user) }
+
     before do
       visit new_user_session_path
       fill_in 'user[email]', with: user.email
       fill_in 'user[password]', with: user.password
       click_button 'Log In'
     end
+
     context 'ヘッダーの表示を確認' do
       subject { page }
+
       it 'タイトルが表示される' do
         is_expected.to have_content 'Weiter'
       end
     end
+
     context 'ヘッダーのリンクを確認' do
       subject { current_path }
+
       it 'Articles画面に遷移する' do
         expect(page).to have_link "", href: articles_path
       end

@@ -77,7 +77,7 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :content, :image, :user_id, :hashbody, :opponent_team, :good_point, :improvement_point, :next_challenge, hashtag_ids: [] )
+    params.require(:article).permit(:title, :content, :image, :user_id, :hashbody, :opponent_team, :good_point, :improvement_point, :next_challenge, hashtag_ids: [])
   end
 
   def current_user_article?

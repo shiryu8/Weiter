@@ -18,10 +18,10 @@ Rails.application.routes.draw do
   # フォローしたユーザーの投稿一覧
   get 'following_articles', to: 'articles#following_articles'
 
-  #サッカーノート作成ページ
-   get 'soccer_note', to: 'articles#soccer_note', as: 'soccer_note'
-   get 'articles/:id/soccer_note_edit', to: 'articles#soccer_note_edit', as: 'soccer_note_edit'
-   get 'articles/:id/soccer_note_show', to: 'articles#soccer_note_show', as: 'soccer_note_show'
+  # サッカーノート作成ページ
+  get 'soccer_note', to: 'articles#soccer_note', as: 'soccer_note'
+  get 'articles/:id/soccer_note_edit', to: 'articles#soccer_note_edit', as: 'soccer_note_edit'
+  get 'articles/:id/soccer_note_show', to: 'articles#soccer_note_show', as: 'soccer_note_show'
 
   resources :users, only: [:show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
