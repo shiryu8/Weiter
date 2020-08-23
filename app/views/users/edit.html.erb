@@ -5,7 +5,7 @@
 
 	<h1 class="useredit-title">Edit Profile</h1>
 
-	<%= form_for(@user, url: user_path) do |f| %>
+	<%= form_for(@user) do |f| %>
 		<div class="useredit-img">
 			<h3 class="articleedit-img-title">Profile Image</h3>
 			<%= f.attachment_field :profile_image %>
@@ -31,7 +31,7 @@
 
 			<div>
 			<%= f.label :introduction, 'Introduction' %>
-			<%= f.text_area :introduction, :maxlength => "255", :size => "80x5",  class: 'form-control'  %>
+			<%= f.text_area :introduction,  class: 'form-control'  %>
 			</div>
 			<div class="useredit-button">
 				<%= f.submit 'Done', class: 'btn btn-primary pull-right' %>
