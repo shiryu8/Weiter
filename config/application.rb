@@ -22,3 +22,9 @@ module Weiter
     config.i18n.default_locale = :ja
   end
 end
+
+module Dansyalist
+  class Application < Rails::Application
+    config.i18n.default_locale = :ja
+  end
+end
