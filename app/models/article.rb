@@ -13,7 +13,7 @@ class Article < ApplicationRecord
   attachment :image, type: :image
   validates :image, presence: true
   validates :title, presence: true
-  validates :content, presence: true, length: { maximum: 300 }
+  validates :content, presence: true
 
   # 投稿がファボしてあるかどうかを判定する
   def favorited_by?(user)

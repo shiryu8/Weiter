@@ -12,13 +12,9 @@ RSpec.describe 'Articleモデルのテスト', type: :model do
     end
 
     context 'contentカラム' do
-      # it '空欄でないこと' do
-      #   article.content = ''
-      #   expect(article.valid?).to eq false;
-      # end
-      it '300文字以下であること' do
-        article.content = Faker::Lorem.characters(number: 301)
-        expect(article.valid?).to eq false
+      it '空欄でないこと' do
+        article.content = ''
+        expect(article.valid?).to eq false;
       end
     end
 
