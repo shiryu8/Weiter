@@ -21,6 +21,26 @@ Weiter
 自分のサッカーに関した日常や挑戦を発信したいと思ったとき
 サッカーに関連した知識や情報を発信したい、学びたいと思ったとき
 
+###開発環境
+- OS
+Linux(Ubuntu)
+
+- 言語
+HTML/CSS
+JavaScript
+Ruby
+
+- フレームワーク/ライブラリ
+Ruby on Rails
+jQuery
+Bootstrap
+Rspec
+Rubocop
+
+- インフラ
+AWS(EC2/EIP/AMI/RDS/Route53/ACM/)
+
+
 
 ## 設計書
 ### 機能一覧
